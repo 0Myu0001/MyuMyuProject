@@ -17,11 +17,11 @@ const MainLibrary = () => {
       }}>
         <Typography variant='h2' sx={{fontFamily: 'Noto Sans JP', fontSize: '50px', mx: '10px',}}>Your Library</Typography>
         <Typography variant='h4' sx={{fontFamily: 'Noto Sans JP', fontSize: '32px', mx: '10px',}}>Playlists</Typography>
-        <Box sx={{my: '1%', display: 'flex', flexDirection: 'row', overflowX: 'scroll',}}>
-          <Paper sx={{width: '180px', pt: '180px', mx: '5%', overflow: 'auto'}}></Paper>
-          <Paper sx={{width: '180px', pt: '180px', mx: '5%'}}></Paper>
-          <Paper sx={{width: '180px', pt: '180px', mx: '5%'}}></Paper>
-          <Paper sx={{width: '180px', pt: '180px', mx: '5%'}}></Paper>
+        <Box sx={{my: '1%', display: 'flex', flexWrap: 'wrap', flexDirection: 'row', overflowX: 'scroll',}}>
+          <Paper sx={{width: '180px', pt: '180px', m: '5%'}}></Paper>
+          <Paper sx={{width: '180px', pt: '180px', m: '5%'}}></Paper>
+          <Paper sx={{width: '180px', pt: '180px', m: '5%'}}></Paper>
+          <Paper sx={{width: '180px', pt: '180px', m: '5%'}}></Paper>
         </Box>
       </Box>
     </Paper>

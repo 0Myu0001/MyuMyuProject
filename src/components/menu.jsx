@@ -37,6 +37,7 @@ const Menu = () => {
           display: 'flex',
           flexDirection: 'column',
           gridArea: '2 / 1 / 25 / 2',
+          width: '260px',
           p: '10px'
         }}>
         <Box>
