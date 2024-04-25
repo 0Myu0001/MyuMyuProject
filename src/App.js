@@ -5,7 +5,6 @@ import Search from './components/Search.jsx';
 import Suggest from './components/Suggest.jsx'
 import TrendsBar from './components/TrendsBar.jsx'
 import Box from '@mui/material/Box';
-import { Route, Routes } from 'react-router-dom';
 
 const style = {
   height: '100vh',

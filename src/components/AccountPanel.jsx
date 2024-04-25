@@ -2,6 +2,7 @@ import * as React from 'react';
 import Paper from '@mui/material/Paper';
 import { Box, Tab, Tabs, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
+import { useEffect } from 'react';
 
 const StyledTabs = styled((props) => (
   <Tabs
@@ -40,6 +41,14 @@ const StyledTab = styled((props) => <Tab disableRipple {...props} />)(
 const AccountPanel = () => {
   const [value, setValue] = React.useState(0);
 
+  const [userData, setUserData] = React.useState(null);
+
+  useEffect(() => {
+    fetch('http://localhost:8000/api/')
+      .then((res) => res.json())
+      .then(data => setUserData(data[0]))
+  }, []);
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -59,8 +68,9 @@ const AccountPanel = () => {
       >
         <Paper sx={{gridArea: '1 / 1 / 5 / 5', borderRadius: '15px', width: '100%', pt: '100%',}}>
         </Paper>
-        <Typography sx={{gridArea: '2 / 5 / 3 / 10', fontFamily: 'Noto Sans JP', fontSize: '32px', my: 'auto', mx: '10px', color: '#3f3f3f',}}>MyuMyu</Typography>
-        <Typography sx={{gridArea: '3 / 5 / 4 / 10', fontFamily: 'Noto Sans JP', fontSize: '24px', my: 'auto', mx: '10px', color: '#3f3f3f',}}>@MyuMyuOfficial</Typography>
+        {/* get data from django databases */}
+        <Typography sx={{gridArea: '2 / 5 / 3 / 10', fontFamily: 'Noto Sans JP', fontSize: '32px', my: 'auto', mx: '10px', color: '#3f3f3f',}}>{ userData ? userData.user_name : 'Loading...' }</Typography> 
+        <Typography sx={{gridArea: '3 / 5 / 4 / 10', fontFamily: 'Noto Sans JP', fontSize: '24px', my: 'auto', mx: '10px', color: '#3f3f3f',}}>{ userData ? userData.user_id : 'Loading...' }</Typography>
         <Box sx={{gridArea: '4 / 6 / 5 / 8', display: 'flex', flexDirection: 'column',}}>
           <Typography variant='body1' sx={{fontFamily: 'Noto Sans JP', fontSize: '16px', m: 'auto', color: '#3f3f3f',}}>Following</Typography>
           <Typography variant='body1' sx={{fontFamily: 'Noto Sans JP', fontSize: '16px', m: 'auto', color: '#3f3f3f',}}>-.--M</Typography>
