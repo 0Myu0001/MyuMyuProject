@@ -41,12 +41,12 @@ const StyledTab = styled((props) => <Tab disableRipple {...props} />)(
 const AccountPanel = () => {
   const [value, setValue] = React.useState(0);
 
-  const [userData, setUserData] = React.useState(null);
+  const [userProfiles, setUserProfile] = React.useState(null);
 
   useEffect(() => {
-    fetch('http://localhost:8000/api/')
+    fetch('http://127.0.0.1:8000//api/user-profile/')
       .then((res) => res.json())
-      .then(data => setUserData(data[0]))
+      .then(data => setUserProfile(data[0]))
   }, []);
 
   const handleChange = (event, newValue) => {
@@ -69,8 +69,12 @@ const AccountPanel = () => {
         <Paper sx={{gridArea: '1 / 1 / 5 / 5', borderRadius: '15px', width: '100%', pt: '100%',}}>
         </Paper>
         {/* get data from django databases */}
-        <Typography sx={{gridArea: '2 / 5 / 3 / 10', fontFamily: 'Noto Sans JP', fontSize: '32px', my: 'auto', mx: '10px', color: '#3f3f3f',}}>{ userData ? userData.user_name : 'Loading...' }</Typography> 
-        <Typography sx={{gridArea: '3 / 5 / 4 / 10', fontFamily: 'Noto Sans JP', fontSize: '24px', my: 'auto', mx: '10px', color: '#3f3f3f',}}>{ userData ? userData.user_id : 'Loading...' }</Typography>
+        <Typography sx={{gridArea: '2 / 5 / 3 / 10', fontFamily: 'Noto Sans JP', fontSize: '32px', my: 'auto', mx: '10px', color: '#3f3f3f',}}>
+          { userProfiles ? userProfiles.user_name : 'Loading...' }
+        </Typography> 
+        <Typography sx={{gridArea: '3 / 5 / 4 / 10', fontFamily: 'Noto Sans JP', fontSize: '24px', my: 'auto', mx: '10px', color: '#3f3f3f',}}>
+          { userProfiles ? userProfiles.user_id : 'Loading...' }
+        </Typography>
         <Box sx={{gridArea: '4 / 6 / 5 / 8', display: 'flex', flexDirection: 'column',}}>
           <Typography variant='body1' sx={{fontFamily: 'Noto Sans JP', fontSize: '16px', m: 'auto', color: '#3f3f3f',}}>Following</Typography>
           <Typography variant='body1' sx={{fontFamily: 'Noto Sans JP', fontSize: '16px', m: 'auto', color: '#3f3f3f',}}>-.--M</Typography>
