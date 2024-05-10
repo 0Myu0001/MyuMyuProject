@@ -44,7 +44,7 @@ const AccountPanel = () => {
   const [userProfiles, setUserProfile] = React.useState(null);
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8000//api/user-profile/')
+    fetch('http://127.0.0.1:8000/api/')
       .then((res) => res.json())
       .then(data => setUserProfile(data[0]))
   }, []);
