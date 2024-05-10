@@ -16,8 +16,6 @@ import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
 import AddCircleOutlineRoundedIcon from '@mui/icons-material/AddCircleOutlineRounded';
 import IosShareIcon from '@mui/icons-material/IosShare';
 
-const duration = 200;
-
 const formatDuration = (value) => {
   const minute = Math.floor(value / 60);
   const secondLeft = value - minute * 60;
@@ -32,12 +30,67 @@ const TinyText = styled(Typography)({
 });
 
 const Player = () => {
-  const [position, setPosition] = React.useState(32);
+  const [position, setPosition] = React.useState(0);
+  const [duration, setDuration] = React.useState(0);
   const [isFavorite, setIsFavorite] = React.useState(false);
-  const [isPause, setIsPause] = React.useState(false);
+
+  const [post, setPost] = React.useState(null);
+  const postId = 60001;
+
   const handleClickFavorite = () => setIsFavorite(!isFavorite);
+
+  React.useEffect(() => {
+    fetch(`http://127.0.0.1:8000/api/post/${postId}/`)
+      .then((res) => res.json())
+      .then(data => setPost(data))
+  }, [postId]);
+
+  const [audio, setAudio] = React.useState(null);
+  const [isPause, setIsPause] = React.useState(false);
   const handleClickPause = () => setIsPause(!isPause);
 
+  React.useEffect(() => {
+    if (post) {
+      setAudio(new Audio(post.post));
+    }
+  }, [post]);
+
+  React.useEffect(() => {
+    if (audio) {
+      isPause ? audio.play(): audio.pause();
+    }
+  }, [isPause, audio]);
+
+  React.useEffect(() => {
+    if (audio) {
+      setDuration(audio.duration);
+  
+      audio.ontimeupdate = () => {
+        setPosition(audio.currentTime);
+      };
+    }
+  }, [audio]);
+
+  React.useEffect(() => {
+    if (audio) {
+      const handleCanPlayThrough = () => {
+        setDuration(audio.duration);
+      };
+  
+      audio.addEventListener('canplaythrough', handleCanPlayThrough);
+  
+      return () => {
+        audio.removeEventListener('canplaythrough', handleCanPlayThrough);
+      };
+    }
+  }, [audio]);
+
+  const handlePositionChange = (_, value) => {
+    if (audio) {
+      audio.currentTime = value;
+      setPosition(value);
+    }
+  };
 
   return(
     <Paper sx={{
@@ -51,16 +104,18 @@ const Player = () => {
       }}
       elevation = {6}
     >
-      <Paper sx={{gridArea: '2 / 2 / 5 / 5',}}>
-      </Paper>
+      <Paper sx={{gridArea: '2 / 2 / 5 / 5',}} />
+      <Box sx={{gridArea: '2 / 2 / 5 / 5',}}>
+        {post && <img src={post.post_image} alt="Post Image" style={{width: '100%', height: '100%', objectFit: 'cover'}} />}
+      </Box>
       <Box sx={{gridArea: '2 / 5 / 3 / 9', display: 'flex', flexDirection: 'column',}}>
-        <Typography sx={{ml: '5%',fontFamily: 'Noto Sans JP', color: '#3f3f3f', fontSize: '20px', justifyContent: 'space-between'}}>Music Name</Typography>
-        <Typography sx={{ml: '5%',fontFamily: 'Noto Sans JP', color: '#3f3f3f', fontSize: '15px', justifyContent: 'space-between'}}>@MyuMyuOfficial</Typography>
+        <Typography sx={{ml: '5%',fontFamily: 'Noto Sans JP', color: '#3f3f3f', fontSize: '20px', justifyContent: 'space-between'}}> {post ? post.post_title : 'Loading...'} </Typography>
+        <Typography sx={{ml: '5%',fontFamily: 'Noto Sans JP', color: '#3f3f3f', fontSize: '15px', justifyContent: 'space-between'}}> {post ? post.user_id : 'Loading...'} </Typography>
       </Box>
       <Box sx={{gridArea: '3 / 5 / 5 / 9' ,display: 'flex',}}>
         <IconButton aria-label="return" size="large" sx={{m: 'auto',}}><KeyboardDoubleArrowLeftRoundedIcon fontSize="inherit" /></IconButton>
         <IconButton aria-label="pause" size="large" sx={{m: 'auto',}} onClick={handleClickPause}>
-          {isPause ? <PlayArrowRoundedIcon fontSize='inherit' /> : <PauseRoundedIcon fontSize='inherit' />}
+          {isPause ? <PauseRoundedIcon fontSize='inherit' /> : <PlayArrowRoundedIcon fontSize='inherit' />}
         </IconButton>
         <IconButton aria-label="skip" size="large" sx={{m: 'auto',}}><KeyboardDoubleArrowRightRoundedIcon fontSize="inherit" /></IconButton>
       </Box>
@@ -71,7 +126,7 @@ const Player = () => {
         min={0}
         step={1}
         max={duration}
-        onChange={(_, value) => setPosition(value)}
+        onChange={handlePositionChange}
         sx={{
           gridArea: '6 / 2 / 7 / 9',
           color: 'rgba(0,0,0,0.87)',
@@ -104,12 +159,12 @@ const Player = () => {
           justifyContent: 'space-between',
         }}
       >
-        <TinyText>{formatDuration(position)}</TinyText>
-        <TinyText>-{formatDuration(duration - position)}</TinyText>
+        <TinyText>{formatDuration(Math.floor(position))}</TinyText>
+        <TinyText>-{formatDuration(Math.floor(duration - position))}</TinyText>
       </Box>
       <Box sx={{gridArea: '8 / 2 / 9 / 6', display: 'flex',}}>
         <IconButton aria-label="love" size="large" sx={{m: 'auto'}} onClick={handleClickFavorite}>
-          {isFavorite ? <FavoriteRoundedIcon fontSize="inherit" /> : <FavoriteBorderRoundedIcon fontSize="inherit" />}
+          {isFavorite ? <FavoriteRoundedIcon fontSize="inherit" sx={{color: '#F06060'}} /> : <FavoriteBorderRoundedIcon fontSize="inherit" />}
         </IconButton>
         <IconButton area-label="addLibrary" size="large" sx={{m: 'auto'}}>
           <AddCircleOutlineRoundedIcon fontSize="inherit"/>

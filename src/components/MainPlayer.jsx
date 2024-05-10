@@ -20,8 +20,6 @@ import PauseRoundedIcon from '@mui/icons-material/PauseRounded';
 import PlayArrowRoundedIcon from '@mui/icons-material/PlayArrowRounded';
 import { Button, CardActions, CardContent } from '@mui/material';
 
-const duration = 200;
-
 const CustomTabPanel = (props) => {
   const { children, value, index, ...other } = props;
 
@@ -55,8 +53,6 @@ const a11yProps = (index) => {
   };
 }
 
-
-
 const formatDuration = (value) => {
   const minute = Math.floor(value / 60);
   const secondLeft = value - minute * 60;
@@ -86,10 +82,15 @@ const modalStyle = {
 
 const MainPlayer = () => {
   const [value, setValue] = React.useState(0);
-  const [position, setPosition] = React.useState(32);
+  const [position, setPosition] = React.useState(0);
+  const [duration, setDuration] = React.useState(0);
   const [isFavorite, setIsFavorite] = React.useState(false);
   const [openDetails, setOpenDetails] = React.useState(false);
   const [openComments, setOpenComments] = React.useState(false);
+
+  const [post, setPost] = React.useState(null);
+  const postId = 60001;
+
   const handleOpenDetails = () => setOpenDetails(true);
   const handleOpenComments =() => setOpenComments(true);
   const handleCloseDetails = () => setOpenDetails(false);
@@ -99,6 +100,52 @@ const MainPlayer = () => {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  React.useEffect(() => {
+    fetch(`http://127.0.0.1:8000/api/post/${postId}/`)
+      .then((res) => res.json())
+      .then(data => setPost(data))
+  } ,[postId]);
+
+  const [audio, setAudio] = React.useState(null);
+  const [isPause, setIsPause] = React.useState(false);
+  const handleClickPause = () => setIsPause(!isPause);
+
+  React.useEffect(() => {
+    if (post) {
+      setAudio(new Audio(post.post));
+    }
+  }, [post]);
+
+  React.useEffect(() => {
+    if (audio) {
+      isPause ? audio.play(): audio.pause();
+    }
+  }, [isPause, audio]);
+
+  React.useEffect(() => {
+    if (audio) {
+      setDuration(audio.duration);
+  
+      audio.ontimeupdate = () => {
+        setPosition(audio.currentTime);
+      };
+    }
+  }, [audio]);
+
+  React.useEffect(() => {
+    if (audio) {
+      const handleCanPlayThrough = () => {
+        setDuration(audio.duration);
+      };
+  
+      audio.addEventListener('canplaythrough', handleCanPlayThrough);
+        
+      return () => {
+        audio.removeEventListener('canplaythrough', handleCanPlayThrough);
+      };
+    }
+  }, [audio]);
 
   return(
     <Paper 
@@ -133,7 +180,7 @@ const MainPlayer = () => {
           fontSize: '20px',
           fontFamily: 'Noto Sans JP',
         }}>
-          @MyuMyu_Official
+          {post ? post.user_id : 'Loading...'}
         </Typography>
         <Box sx={{ gridArea: '7 / 9 / 8 / 12', display: 'flex', mt: 'auto', }}>
           <IconButton aria-label="love" size="medium" onClick={ handleClickFavorite } sx={{ m: 'auto' }}>
@@ -187,8 +234,8 @@ const MainPlayer = () => {
             mt: -2,
           }}
         >
-          <TinyText>{formatDuration(position)}</TinyText>
-          <TinyText>-{formatDuration(duration - position)}</TinyText>
+          <TinyText>{formatDuration(Math.floor(position))}</TinyText>
+          <TinyText>-{formatDuration(Math.floor(duration - position))}</TinyText>
         </Box>
         <Card sx={{ gridArea: '9 / 2 / 12 / 7', }}>
           <CardContent>

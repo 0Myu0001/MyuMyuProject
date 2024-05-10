@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { RouterProvider, createBrowserRouter, } from 'react-router-dom';
 import './index.css'
 import App from './App';
+import Login from './Login';
 import Explore from './Explore';
 import Library from './Library';
 import Notification from './Notification';
@@ -30,10 +31,16 @@ const router = createBrowserRouter([
   {
     path: '/account',
     element: <Account />,
-  }
+  },
+  {
+    path: '/signin',
+    element: <Login />,
+  },
+
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
   <React.StrictMode>
     <RouterProvider router={router} />
