@@ -52,7 +52,7 @@ const Menu = () => {
         <Box sx={{
           mb: 'auto',
         }}>
-          <Link to='/'>
+          <Link to='/home'>
             <Button variant="text" sx={{
               color: '#3f3f3f',
               fontFamily: 'Noto Sans JP',

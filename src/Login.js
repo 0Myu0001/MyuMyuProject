@@ -22,9 +22,9 @@ const Login = () => {
     <Box sx={style}>
       <TrendsBar />
         <Routes>
-          <Route path="/" element={<ForgotPassword/>} />
+          <Route path="/" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path='resetpassword' element={<SignIn />} />
+          <Route path='resetpassword' element={<ForgotPassword/>} />
         </Routes>
     </Box>
   );

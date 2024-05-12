@@ -84,6 +84,7 @@ const MainPlayer = () => {
   const [value, setValue] = React.useState(0);
   const [position, setPosition] = React.useState(0);
   const [duration, setDuration] = React.useState(0);
+  const [isHovered, setIsHovered] = React.useState(false);
   const [isFavorite, setIsFavorite] = React.useState(false);
   const [openDetails, setOpenDetails] = React.useState(false);
   const [openComments, setOpenComments] = React.useState(false);
@@ -147,6 +148,18 @@ const MainPlayer = () => {
     }
   }, [audio]);
 
+  const handlePositionChange = (_, value) => {
+    if (audio) {
+      setPosition(value);
+    }
+  };
+
+  const handlePositionChangeCommitted = (_, value) => {
+    if (audio) {
+      audio.currentTime = value;
+    }
+  };
+
   return(
     <Paper 
       sx = {{m: '5px', gridArea: '2 / 2 / 25 / 5', backgroundColor: 'rgba(255, 255, 255, 0.1)', borderRadius: '15px',}}
@@ -159,10 +172,30 @@ const MainPlayer = () => {
         gridTemplateColumns: 'repeat(12, 1fr)',
         gridTemplateRows: 'repeat(12, 1fr)',
       }}>
-        <Paper elevation='6' sx={{
+        <Box sx={{
           gridArea: '2 / 4 / 7 / 10',
-        }}>
-        </Paper>
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        >
+        <Paper elevation='6' sx={{
+            maxWidth: '100%',
+            maxHeight: '100%',
+            aspectRatio: ' 1 / 1 ',
+            borderRadius: '10px',
+            '&:hover': {
+              filter: 'brightness(50%)',
+            }, 
+          }}
+          onClick={handleClickPause}
+          >
+            {post && <img src={post.post_image} alt="Post Image" style={{width: '100%', height: '100%', objectFit: 'cover', borderRadius: '10px',}} />}
+          </Paper>
+          {isHovered && (isPause ? <PauseRoundedIcon fontSize="large" sx={{position: 'absolute', color: '#FFFFFF',}} /> : <PlayArrowRoundedIcon fontSize='large' sx={{position: 'absolute', color: '#FFFFFF',}} />)}
+        </Box>
         <IconButton aria-label="return" size="large" sx={{
           gridArea: '4 / 2 / 5 / 3',
         }}>
@@ -200,14 +233,15 @@ const MainPlayer = () => {
           min={0}
           step={1}
           max={duration}
-          onChange={(_, value) => setPosition(value)}
+          onChange={handlePositionChange}
+          onChangeCommitted={handlePositionChangeCommitted}
           sx={{
             gridArea: '8 / 2 / 9 / 12',
             color: 'rgba(0,0,0,0.87)',
             height: 4,
            '& .MuiSlider-thumb': {
-              width: 8,
-              height: 8,
+              width: 10,
+              height: 10,
               transition: '0.3s cubic-bezier(.47,1.64,.41,.8)',
               '&::before': {
                 boxShadow: '0 2px 12px 0 rgba(0,0,0,0.4)',

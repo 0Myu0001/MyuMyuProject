@@ -2,13 +2,9 @@ import * as React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Menu from './components/menu.jsx';
 import MainPlayer from './components/MainPlayer.jsx';
-import MainExplorer from './components/MainExplorer.jsx';
-import MainLibrary from './components/MainLibrary.jsx';
-import NotificationWindow from './components/NotificationWindow.jsx';
-import AccountPanel from './components/AccountPanel.jsx';
 import Search from './components/Search.jsx';
-import Player from './components/Player.jsx';
-import TrendsBar from './components/TrendsBar.jsx';
+import Suggest from './components/Suggest.jsx'
+import TrendsBar from './components/TrendsBar.jsx'
 import Box from '@mui/material/Box';
 
 const style = {
@@ -22,24 +18,21 @@ const style = {
   gridTemplateRows: 'repeat(24, 1fr)',
 }
 
-const App = () => {
+const Home = () => {
   return (
     <div>
       <Box sx={style}>
         <TrendsBar />
         <Menu />
         <Routes>
-          <Route path='/explore' element={<MainExplorer />} />
-          <Route path='/library' element={<MainLibrary />} />
-          <Route path='/notification' element={<NotificationWindow />} />
-          <Route path='/account' element={<AccountPanel/>} />
+          <Route path='/' element={<MainPlayer />} />
         </Routes>
         <Search />
-        <Player />
+        <Suggest />
+        
       </Box>
     </div>
   );
 };
 
-export default App;
-
+export default Home;

@@ -87,8 +87,13 @@ const Player = () => {
 
   const handlePositionChange = (_, value) => {
     if (audio) {
-      audio.currentTime = value;
       setPosition(value);
+    }
+  };
+
+  const handlePositionChangeCommitted = (_, value) => {
+    if (audio) {
+      audio.currentTime = value;
     }
   };
 
@@ -104,9 +109,17 @@ const Player = () => {
       }}
       elevation = {6}
     >
-      <Paper sx={{gridArea: '2 / 2 / 5 / 5',}} />
+      
       <Box sx={{gridArea: '2 / 2 / 5 / 5',}}>
-        {post && <img src={post.post_image} alt="Post Image" style={{width: '100%', height: '100%', objectFit: 'cover'}} />}
+        {/*以下のpaper要素が正方形にならない*/}
+        <Paper sx={{
+            maxWidth: '100%',
+            maxHeight: '100%',
+            aspectRatio: '1/1',
+          }} 
+        >
+          {post && <img src={post.post_image} alt="Post Image" style={{width: '100%', height: '100%', objectFit: 'contain'}} />}
+        </Paper>
       </Box>
       <Box sx={{gridArea: '2 / 5 / 3 / 9', display: 'flex', flexDirection: 'column',}}>
         <Typography sx={{ml: '5%',fontFamily: 'Noto Sans JP', color: '#3f3f3f', fontSize: '20px', justifyContent: 'space-between'}}> {post ? post.post_title : 'Loading...'} </Typography>
@@ -127,6 +140,7 @@ const Player = () => {
         step={1}
         max={duration}
         onChange={handlePositionChange}
+        onChangeCommitted={handlePositionChangeCommitted}
         sx={{
           gridArea: '6 / 2 / 7 / 9',
           color: 'rgba(0,0,0,0.87)',
