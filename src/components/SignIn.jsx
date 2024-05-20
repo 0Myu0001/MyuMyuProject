@@ -42,18 +42,21 @@ const SignIn = () => {
       <FormGroup sx={{ml: '12.5%',}}>
         <FormControlLabel control={<Switch defaultChecked />} label={<Typography sx={{fontFamily: 'Noto Sans JP',}}>Remember me</Typography>}/>
       </FormGroup>
-      <Button variant='text' sx={{mx: 'auto', my: '10px', width: '40%',textTransform: 'none', fontFamily: 'Noto Sans jp',}}>Forgot password</Button>
       <Button type='submit' variant='contained' sx={{mx: 'auto', my: '10px', width: '40%',textTransform: 'none', fontFamily: 'Noto Sans jp',}}>Sign in</Button>
-      <Box>
-        <Button variant='outlined' sx={{mx: '5%',my: '10px', width: '40%', textTransform: 'none', fontFamily: 'Noto Sans jp',}} startIcon={<GoogleIcon />} href="https://www.google.com">Sign in with Google</Button>
-        <Button variant='outlined' sx={{mx: '5%',my: '10px', width: '40%', textTransform: 'none', fontFamily: 'Noto Sans jp',}} startIcon={<AppleIcon />} href="https://www.google.com">Sign in with Apple</Button>
+      <Box sx={{display: 'flex', justifyContent: 'space-evenly'}}>
+        <Button variant='outlined' sx={{my: '10px', width: '40%', textTransform: 'none', fontFamily: 'Noto Sans jp',}} startIcon={<GoogleIcon />} href="https://www.google.com">Sign in with Google</Button>
+        <Button variant='outlined' sx={{my: '10px', width: '40%', textTransform: 'none', fontFamily: 'Noto Sans jp',}} startIcon={<AppleIcon />} href="https://www.google.com">Sign in with Apple</Button>
       </Box>
       <Typography variant="h6" sx={{mx: 'auto', my: '10px', color: '#3F3F3F'}}>or</Typography>
-      <Button variant='contained' sx={{mx: 'auto', my: '10px', width: '40%',textTransform: 'none', fontFamily: 'Noto Sans jp',}}>
-          <Link to="/signup" style={{ textDecoration: 'none', color: 'inherit' }}>Sign up</Link>
-        </Button>
+      <Box sx={{mx: 'auto', my: '10px', width: '40%',}}>
+        <Link to="/signin/signup" style={{ textDecoration: 'none', color: 'inherit',}}>
+          <Button variant='contained' sx={{textTransform: 'none', fontFamily: 'Noto Sans jp', width: '100%'}}>
+              Sign up
+          </Button>
+        </Link>
+      </Box>
       <Typography variant="h6" sx={{mx: 'auto', my: '10px', color: '#3F3F3F'}}>Get App</Typography>
-      <Box>
+      <Box >
         <a href="https://www.google.com">
           <img 
             src="https://developer.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg" 

@@ -7,8 +7,12 @@ import Typography from '@mui/material/Typography';
 import Card from '@mui/material/Card';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 import PropTypes from 'prop-types';
 import { styled } from '@mui/material/styles';
+import useTheme from '@mui/material/styles/useTheme';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import Modal from '@mui/material/Modal';
 import KeyboardDoubleArrowRightRoundedIcon from '@mui/icons-material/KeyboardDoubleArrowRightRounded';
 import KeyboardDoubleArrowLeftRoundedIcon from '@mui/icons-material/KeyboardDoubleArrowLeftRounded';
@@ -16,9 +20,49 @@ import FavoriteBorderRoundedIcon from '@mui/icons-material/FavoriteBorderRounded
 import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
 import AddCircleOutlineRoundedIcon from '@mui/icons-material/AddCircleOutlineRounded';
 import IosShareIcon from '@mui/icons-material/IosShare';
+import MoreVertRoundedIcon from '@mui/icons-material/MoreVertRounded';
 import PauseRoundedIcon from '@mui/icons-material/PauseRounded';
 import PlayArrowRoundedIcon from '@mui/icons-material/PlayArrowRounded';
+import RepeatRoundedIcon from '@mui/icons-material/RepeatRounded';
+import RepeatOneRoundedIcon from '@mui/icons-material/RepeatOneRounded';
+import ShuffleRoundedIcon from '@mui/icons-material/ShuffleRounded';
 import { Button, CardActions, CardContent } from '@mui/material';
+
+
+const StyledTabs = styled((props) => (
+  <Tabs
+    {...props}
+    TabIndicatorProps={{ children: <span className="MuiTabs-indicatorSpan" /> }}
+  />
+))({
+  '& .MuiTabs-indicator': {
+    display: 'flex',
+    justifyContent: 'center',
+    backgroundColor: 'transparent',
+  },
+  '& .MuiTabs-indicatorSpan': {
+    maxWidth: 40,
+    width: '100%',
+    backgroundColor: '#635ee7',
+  },
+});
+
+const StyledTab = styled((props) => <Tab disableRipple {...props} />)(
+  ({ theme }) => ({
+    textTransform: 'none',
+    fontWeight: theme.typography.fontWeightRegular,
+    fontSize: theme.typography.pxToRem(15),
+    marginRight: theme.spacing(1),
+    color: 'rgba(63, 63, 63, 0.5)',
+    '&.Mui-selected': {
+      color: '#3f3f3f',
+    },
+    '&.Mui-focusVisible': {
+      backgroundColor: 'rgba(100, 95, 228, 0.32)',
+    },
+  }),
+);
+
 
 const CustomTabPanel = (props) => {
   const { children, value, index, ...other } = props;
@@ -88,9 +132,23 @@ const MainPlayer = () => {
   const [isFavorite, setIsFavorite] = React.useState(false);
   const [openDetails, setOpenDetails] = React.useState(false);
   const [openComments, setOpenComments] = React.useState(false);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const theme = useTheme();
+  const mdMatches = useMediaQuery(theme.breakpoints.up('(min-width:960px)'));
+  const smMatches = useMediaQuery(theme.breakpoints.up('(min-width:450px)'));
+
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
 
   const [post, setPost] = React.useState(null);
-  const postId = 60001;
+  const postId = '*00000000*';
 
   const handleOpenDetails = () => setOpenDetails(true);
   const handleOpenComments =() => setOpenComments(true);
@@ -114,7 +172,7 @@ const MainPlayer = () => {
 
   React.useEffect(() => {
     if (post) {
-      setAudio(new Audio(post.post));
+      setAudio(new Audio(`http://127.0.0.1:8000${post.post}`));
     }
   }, [post]);
 
@@ -172,6 +230,15 @@ const MainPlayer = () => {
         gridTemplateColumns: 'repeat(12, 1fr)',
         gridTemplateRows: 'repeat(12, 1fr)',
       }}>
+        <StyledTabs
+          value={value}
+          onChange={handleChange}
+          aria-label="styled tabs example"
+          sx ={{gridArea: '1 / 1 / 2 / 13', m: 'auto',}}
+        >
+          <StyledTab label="Recommend" sx={{fontFamily: 'Roboto',}} />
+          <StyledTab label="Playlist" sx={{fontFamily: 'Roboto',}} />
+        </StyledTabs>
         <Box sx={{
           gridArea: '2 / 4 / 7 / 10',
           display: 'flex',
@@ -192,7 +259,7 @@ const MainPlayer = () => {
           }}
           onClick={handleClickPause}
           >
-            {post && <img src={post.post_image} alt="Post Image" style={{width: '100%', height: '100%', objectFit: 'cover', borderRadius: '10px',}} />}
+            {post && <img src={`http://127.0.0.1:8000${post.post_image}`} alt="Post Image" style={{width: '100%', height: '100%', objectFit: 'cover', borderRadius: '10px',}} />}
           </Paper>
           {isHovered && (isPause ? <PauseRoundedIcon fontSize="large" sx={{position: 'absolute', color: '#FFFFFF',}} /> : <PlayArrowRoundedIcon fontSize='large' sx={{position: 'absolute', color: '#FFFFFF',}} />)}
         </Box>
@@ -206,15 +273,45 @@ const MainPlayer = () => {
         }}>
           <KeyboardDoubleArrowRightRoundedIcon fontSize="inherit" />
         </IconButton>
-        <Typography variant="body1" sx={{
-          mt: 'auto',
-          gridArea: '7 / 3 / 8 / 6',
-          fontColor: '#3f3f3f', 
-          fontSize: '20px',
-          fontFamily: 'Noto Sans JP',
-        }}>
-          {post ? post.user_id : 'Loading...'}
-        </Typography>
+        <Box sx={{my: '20px',gridArea: '5 / 11 / 7 / 12', display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly'}}>
+          <IconButton aria-label="repeat" size="medium" sx={{ m: 'auto' }}>
+            <RepeatRoundedIcon fontSize="inherit" />
+          </IconButton>
+          <IconButton aria-label="shuffle" size="medium" sx={{ m: 'auto' }}>
+            <ShuffleRoundedIcon fontSize="inherit" />
+          </IconButton>
+        </Box>
+        <Box sx={{gridArea: '7 / 2 / 8 / 3 '}}>
+          <img />
+        </Box>
+        <Box sx={{gridArea: '7 / 3 / 8 / 9', display: 'flex'}}>
+          <Box sx={{display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly'}}>
+            <Typography variant="body1" sx={{
+              fontColor: '#3f3f3f', 
+              fontSize: '25px',
+              fontFamily: 'Noto Sans JP',
+            }}>
+              Title
+            </Typography>
+            <Typography variant="body1" sx={{
+              fontColor: '#3f3f3f', 
+              fontSize: '20px',
+              fontFamily: 'Noto Sans JP',
+            }}>
+              {post ? post.user_id : 'Loading...'}
+            </Typography>
+          </Box>
+          <Box sx={{display: 'flex'}}>
+            <Button variant='contained' sx={{ 
+              ml: '20px',
+              mt: 'auto',
+              textTransform: "none", 
+              fontFamily: 'Noto Sans JP',
+            }}>
+              Follow
+            </Button>
+          </Box>
+        </Box>
         <Box sx={{ gridArea: '7 / 9 / 8 / 12', display: 'flex', mt: 'auto', }}>
           <IconButton aria-label="love" size="medium" onClick={ handleClickFavorite } sx={{ m: 'auto' }}>
             {isFavorite ? <FavoriteRoundedIcon fontSize="inherit" /> : <FavoriteBorderRoundedIcon fontSize="inherit" />}
@@ -225,6 +322,29 @@ const MainPlayer = () => {
           <IconButton area-label="share" fontSize="medium" sx={{ m: 'auto' }}>
             <IosShareIcon />
           </IconButton>
+          {/* 必要かわからない */}
+          <IconButton area-label="more" fontSize="medium" onClick={handleClick} sx={{ m: 'auto' }}>
+            <MoreVertRoundedIcon />
+          </IconButton>
+          <Menu
+              id="simple-menu"
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'right',
+              }}
+              transformOrigin={{
+                vertical: 'bottom',
+                horizontal: 'left',
+              }}
+            >
+              <MenuItem onClick={handleClose}>Analyze</MenuItem>
+              <MenuItem onClick={handleClose}>Account Setting</MenuItem>
+              <MenuItem onClick={handleClose}>Privacy Setting</MenuItem>
+              <MenuItem onClick={handleClose}>Sign Out</MenuItem>
+            </Menu>
         </Box>
         <Slider
           aria-label="time-indicator"
