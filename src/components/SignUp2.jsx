@@ -1,10 +1,8 @@
 import * as React from 'react';
 import { Paper, TextField, Button, Box, Typography } from '@mui/material';
-import GoogleIcon from '@mui/icons-material/Google';
-import AppleIcon from '@mui/icons-material/Apple';
 
-const SignUp = () => {
-  const [userId, setUserId] = React.useState('');
+const SignUp2 = () => {
+  const [username, setUserName] = React.useState('');
   const [email, setEmail] = React.useState('');
   const [age, setAge] = React.useState('');
   const [isNextClicked, setIsNextClicked] = React.useState(false);
@@ -12,7 +10,7 @@ const SignUp = () => {
   const handleNextClick = () => setIsNextClicked(true);
 
   const handleUsernameChange = (event) => {
-    setUserId(event.target.value);
+    setUserName(event.target.value);
   };
 
   const handleEmailChange = (event) => {
@@ -27,7 +25,7 @@ const SignUp = () => {
     event.preventDefault();
 
     const data = {
-      user_id: userId,
+      user_id: username,
       user_email: email,
       age: age,
     };
@@ -64,11 +62,13 @@ const SignUp = () => {
       <form onSubmit={handleSubmit}>
         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
           <TextField
-            label="User id"
-            value={userId}
+            label="Password"
+            value={username}
             onChange={handleUsernameChange}
             margin="normal"
             variant='standard'
+            type='password'
+            auto-complete='current-password'
             required
             sx={{
               mx: 'auto',
@@ -89,11 +89,13 @@ const SignUp = () => {
             ↑Other people can see this name. Please think carefully for you safe.
           </Typography>
           <TextField
-            label="Email Address"
+            label="Re-enter Password"
             value={email}
             onChange={handleEmailChange}
             margin="normal"
             variant='standard'
+            type='password'
+            auto-complete='current-password'
             required
             sx={{
               mx: 'auto',
@@ -101,25 +103,19 @@ const SignUp = () => {
               width: '75%',
             }}
           />
-        <TextField
-          label="Birth Date"
-          type="date"
-          value={age}
-          onChange={handleAgeChange}
-          margin="normal"
-          variant='standard'
-          required
-          InputLabelProps={{
-            shrink: true,
-          }}
-          sx={{
-            mx: 'auto',
-            my: '10px',
-            width: '75%',
-          }}
-        />
         </Box>
-        <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+        <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+          <Button 
+            variant='outlined' 
+            sx={{
+              mx: 'auto',
+              my: '10px', 
+              width: '40%', 
+              textTransform: 'none', 
+              fontFamily: 'Noto Sans jp',
+            }} 
+            href="https://www.google.com"
+          >I'm not Robot</Button>
           <Button type='submit' variant='contained' 
             sx={{
               mx: 'auto', 
@@ -133,37 +129,9 @@ const SignUp = () => {
           </Button>
         </Box>
       </form>
-      <Box sx={{display: 'flex', justifyContent: 'space-evenly'}}>
-        <Button 
-          variant='outlined' 
-          sx={{
-            my: '10px', 
-            width: '40%', 
-            textTransform: 'none', 
-            fontFamily: 'Noto Sans jp',
-          }} 
-            startIcon={<GoogleIcon />} 
-            href="https://www.google.com"
-        >
-          Sign up with Google
-        </Button>
-        <Button 
-          variant='outlined' 
-          sx={{
-            my: '10px', 
-            width: '40%', 
-            textTransform: 'none', 
-            fontFamily: 'Noto Sans jp',
-          }} 
-          startIcon={<AppleIcon />} 
-          href="https://www.google.com"
-        >
-          Sign up with Apple
-        </Button>
-      </Box>
     </Paper>
   );
 }
 
 
-export default SignUp;
+export default SignUp2;

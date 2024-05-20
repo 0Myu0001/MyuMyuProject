@@ -1,10 +1,8 @@
 import * as React from 'react';
 import { Paper, TextField, Button, Box, Typography } from '@mui/material';
-import GoogleIcon from '@mui/icons-material/Google';
-import AppleIcon from '@mui/icons-material/Apple';
 
-const SignUp = () => {
-  const [userId, setUserId] = React.useState('');
+const SignUp3 = () => {
+  const [username, setUserName] = React.useState('');
   const [email, setEmail] = React.useState('');
   const [age, setAge] = React.useState('');
   const [isNextClicked, setIsNextClicked] = React.useState(false);
@@ -12,7 +10,7 @@ const SignUp = () => {
   const handleNextClick = () => setIsNextClicked(true);
 
   const handleUsernameChange = (event) => {
-    setUserId(event.target.value);
+    setUserName(event.target.value);
   };
 
   const handleEmailChange = (event) => {
@@ -27,7 +25,7 @@ const SignUp = () => {
     event.preventDefault();
 
     const data = {
-      user_id: userId,
+      user_id: username,
       user_email: email,
       age: age,
     };
@@ -64,8 +62,8 @@ const SignUp = () => {
       <form onSubmit={handleSubmit}>
         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
           <TextField
-            label="User id"
-            value={userId}
+            label="Display Name"
+            value={username}
             onChange={handleUsernameChange}
             margin="normal"
             variant='standard'
@@ -133,37 +131,9 @@ const SignUp = () => {
           </Button>
         </Box>
       </form>
-      <Box sx={{display: 'flex', justifyContent: 'space-evenly'}}>
-        <Button 
-          variant='outlined' 
-          sx={{
-            my: '10px', 
-            width: '40%', 
-            textTransform: 'none', 
-            fontFamily: 'Noto Sans jp',
-          }} 
-            startIcon={<GoogleIcon />} 
-            href="https://www.google.com"
-        >
-          Sign up with Google
-        </Button>
-        <Button 
-          variant='outlined' 
-          sx={{
-            my: '10px', 
-            width: '40%', 
-            textTransform: 'none', 
-            fontFamily: 'Noto Sans jp',
-          }} 
-          startIcon={<AppleIcon />} 
-          href="https://www.google.com"
-        >
-          Sign up with Apple
-        </Button>
-      </Box>
     </Paper>
   );
 }
 
 
-export default SignUp;
+export default SignUp3;
