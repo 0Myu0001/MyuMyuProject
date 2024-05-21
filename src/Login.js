@@ -4,6 +4,8 @@ import TrendsBar from './components/TrendsBar';
 import Box from '@mui/material/Box';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
+import SignUp2 from './components/SignUp2';
+import SignUp3 from './components/SignUp3';
 import ForgotPassword from './components/ForgotPassword';
 
 const style = {
