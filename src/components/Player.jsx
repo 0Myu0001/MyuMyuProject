@@ -11,6 +11,9 @@ import PauseRoundedIcon from '@mui/icons-material/PauseRounded';
 import PlayArrowRoundedIcon from '@mui/icons-material/PlayArrowRounded';
 import KeyboardDoubleArrowRightRoundedIcon from '@mui/icons-material/KeyboardDoubleArrowRightRounded';
 import KeyboardDoubleArrowLeftRoundedIcon from '@mui/icons-material/KeyboardDoubleArrowLeftRounded';
+import RepeatRoundedIcon from '@mui/icons-material/RepeatRounded';
+import RepeatOneRoundedIcon from '@mui/icons-material/RepeatOneRounded';
+import ShuffleRoundedIcon from '@mui/icons-material/ShuffleRounded';
 import FavoriteBorderRoundedIcon from '@mui/icons-material/FavoriteBorderRounded';
 import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
 import AddCircleOutlineRoundedIcon from '@mui/icons-material/AddCircleOutlineRounded';
@@ -35,7 +38,7 @@ const Player = () => {
   const [isFavorite, setIsFavorite] = React.useState(false);
 
   const [post, setPost] = React.useState(null);
-  const postId = 60001;
+  const postId = '*00000000*' ;
 
   const handleClickFavorite = () => setIsFavorite(!isFavorite);
 
@@ -51,7 +54,7 @@ const Player = () => {
 
   React.useEffect(() => {
     if (post) {
-      setAudio(new Audio(post.post));
+      setAudio(new Audio(`http://127.0.0.1:8000${post.post}`));
     }
   }, [post]);
 
@@ -118,19 +121,29 @@ const Player = () => {
             aspectRatio: '1/1',
           }} 
         >
-          {post && <img src={post.post_image} alt="Post Image" style={{width: '100%', height: '100%', objectFit: 'contain'}} />}
+          {post && <img src={`http://127.0.0.1:8000${post.post_image}`} alt="Post Image" style={{width: '100%', height: '100%', objectFit: 'contain'}} />}
         </Paper>
       </Box>
       <Box sx={{gridArea: '2 / 5 / 3 / 9', display: 'flex', flexDirection: 'column',}}>
         <Typography sx={{ml: '5%',fontFamily: 'Noto Sans JP', color: '#3f3f3f', fontSize: '20px', justifyContent: 'space-between'}}> {post ? post.post_title : 'Loading...'} </Typography>
         <Typography sx={{ml: '5%',fontFamily: 'Noto Sans JP', color: '#3f3f3f', fontSize: '15px', justifyContent: 'space-between'}}> {post ? post.user_id : 'Loading...'} </Typography>
       </Box>
-      <Box sx={{gridArea: '3 / 5 / 5 / 9' ,display: 'flex',}}>
-        <IconButton aria-label="return" size="large" sx={{m: 'auto',}}><KeyboardDoubleArrowLeftRoundedIcon fontSize="inherit" /></IconButton>
-        <IconButton aria-label="pause" size="large" sx={{m: 'auto',}} onClick={handleClickPause}>
-          {isPause ? <PauseRoundedIcon fontSize='inherit' /> : <PlayArrowRoundedIcon fontSize='inherit' />}
-        </IconButton>
-        <IconButton aria-label="skip" size="large" sx={{m: 'auto',}}><KeyboardDoubleArrowRightRoundedIcon fontSize="inherit" /></IconButton>
+      <Box sx={{mt: 'auto',gridArea: '3 / 5 / 5 / 9' ,display: 'flex', flexDirection: 'column'}}>
+        <Box sx={{mx: '10px', display: 'flex', justifyContent: 'space-evenly'}}>
+          <IconButton aria-label="return" size="large" sx={{m: 'auto',}}><KeyboardDoubleArrowLeftRoundedIcon fontSize="inherit" /></IconButton>
+          <IconButton aria-label="pause" size="large" sx={{m: 'auto',}} onClick={handleClickPause}>
+            {isPause ? <PauseRoundedIcon fontSize='inherit' /> : <PlayArrowRoundedIcon fontSize='inherit' />}
+          </IconButton>
+          <IconButton aria-label="skip" size="large" sx={{m: 'auto',}}><KeyboardDoubleArrowRightRoundedIcon fontSize="inherit" /></IconButton>
+        </Box>
+        <Box sx={{ml: 'auto',}}>
+          <IconButton aria-label="repeat" size="medium" sx={{ m: 'auto' }}>
+            <RepeatRoundedIcon fontSize="inherit" />
+          </IconButton>
+          <IconButton aria-label="shuffle" size="medium" sx={{ m: 'auto' }}>
+            <ShuffleRoundedIcon fontSize="inherit" />
+          </IconButton>
+        </Box>
       </Box>
       <Slider
         aria-label="time-indicator"
