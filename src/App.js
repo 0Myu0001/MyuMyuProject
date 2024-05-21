@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import Menu from './components/menu.jsx';
+import MenuList from './components/menu.jsx';
 import MainPlayer from './components/MainPlayer.jsx';
 import MainExplorer from './components/MainExplorer.jsx';
 import MainLibrary from './components/MainLibrary.jsx';
@@ -27,7 +27,7 @@ const App = () => {
     <div>
       <Box sx={style}>
         <TrendsBar />
-        <Menu />
+        <MenuList />
         <Routes>
           <Route path='/explore' element={<MainExplorer />} />
           <Route path='/library' element={<MainLibrary />} />
