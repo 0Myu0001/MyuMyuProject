@@ -2,13 +2,15 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 import ExploreIcon from '@mui/icons-material/Explore';
 import FormatListBulletedRoundedIcon from '@mui/icons-material/FormatListBulletedRounded';
 import NotificationsNoneRoundedIcon from '@mui/icons-material/NotificationsNoneRounded';
 import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
+import PeopleAltRoundedIcon from '@mui/icons-material/PeopleAltRounded';
 import { Link } from 'react-router-dom';
 
 //以下サイトの軽量化に使用
@@ -31,7 +33,16 @@ const menuStyle = {
 }
 //ここまで
 
-const Menu = () => {
+const MenuList = () => {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
     return(
         <Box sx = {{
           display: 'flex',
@@ -99,11 +110,11 @@ const Menu = () => {
             <Button variant="text" sx={{
               color: '#3f3f3f', 
               textTransform: "none", 
-              pr: 9.6, 
+              pr: 2, 
               fontFamily: 'Noto Sans JP',
               fontSize: "20px"
             }}> 
-              <MoreVertIcon/><span style={{ marginLeft: "8px" }}>Other</span>
+              <PeopleAltRoundedIcon/><span style={{ marginLeft: "8px" }}>Community</span>
             </Button>
             <Button variant="contained" sx={{
               px: 7.3,
@@ -114,7 +125,10 @@ const Menu = () => {
             </Button>
           </Box>
           <Box>
-              <Button variant="text" sx={{
+            <Button 
+              variant="text"
+              onClick={handleClick}
+              sx={{
                 color: '#3f3f3f', 
                 textTransform: "none", 
                 pr:6.5, 
@@ -122,7 +136,26 @@ const Menu = () => {
                 fontSize: "20px"
               }}> 
                 <SettingsRoundedIcon/> <span style={{ marginLeft: "8px" }}>Settings</span>
-              </Button>
+            </Button>
+            <Menu
+              id="simple-menu"
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'right',
+              }}
+              transformOrigin={{
+                vertical: 'bottom',
+                horizontal: 'left',
+              }}
+            >
+              <MenuItem onClick={handleClose}>Analyze</MenuItem>
+              <MenuItem onClick={handleClose}>Account Setting</MenuItem>
+              <MenuItem onClick={handleClose}>Privacy Setting</MenuItem>
+              <MenuItem onClick={handleClose}>Sign Out</MenuItem>
+            </Menu>
             <Link to='/account'>
               <Button variant="text" sx={{
                 color: '#3f3f3f', 
@@ -140,4 +173,4 @@ const Menu = () => {
     );
 }
 
-export default Menu;
+export default MenuList;

@@ -38,24 +38,24 @@ const Search = () => {
             }}>
                 clear
             </Button>
-            <Box sx={{ flexGrow: 1, display: 'flex', flexWrap: 'wrap', gap: '0',}}>
-                <Paper sx={{height: '36%', borderRadius: '10px', aspectRatio: '4/3', m: '5px',}}>
-                    <Typography >Suggest 1</Typography>
+            <Box sx={{ flexGrow: 1, display: 'flex', flexWrap: 'wrap', gap: '0', justifyContent: 'space-around'}}>
+                <Paper sx={{width: '32%', height: '40%', borderRadius: '10px', aspectRatio: '4/3', backgroundColor: 'rgb(85, 198, 244)',}}>
+                    <Typography sx={{ml: '5px', mt: '5px', fontSize: '16px',fontFamily: 'Noto Sans JP', color: 'white'}}>Featured</Typography>
                 </Paper>
-                <Paper sx={{height: '36%', borderRadius: '10px', aspectRatio: '4/3', m: '5px',}}>
-                    <Typography >Suggest 2</Typography>
+                <Paper sx={{width: '32%', height: '40%', borderRadius: '10px', aspectRatio: '4/3', backgroundColor: 'rgb(234, 75, 63)',}}>
+                    <Typography sx={{ml: '5px', mt: '5px', fontSize: '16px',fontFamily: 'Noto Sans JP', color: 'white'}}>J-Pop</Typography>
                 </Paper>
-                <Paper sx={{height: '36%', borderRadius: '10px', aspectRatio: '4/3', m: '5px',}}>
-                    <Typography >Suggest 3</Typography>
+                <Paper sx={{width: '32%', height: '40%', borderRadius: '10px', aspectRatio: '4/3', backgroundColor: 'rgb(0, 105, 240)',}}>
+                    <Typography sx={{ml: '5px', mt: '5px', fontSize: '16px',fontFamily: 'Noto Sans JP', color: 'white'}}>K-Pop</Typography>
                 </Paper>
-                <Paper sx={{height: '36%', borderRadius: '10px', aspectRatio: '4/3', m: '5px',}}>
-                    <Typography >Suggest 4</Typography>
+                <Paper sx={{width: '32%', height: '40%', borderRadius: '10px', aspectRatio: '4/3', backgroundColor: 'rgb(85, 198, 244)',}}>
+                    <Typography sx={{ml: '5px', mt: '5px', fontSize: '16px',fontFamily: 'Noto Sans JP', color: 'white'}}>Certificated</Typography>
                 </Paper>
-                <Paper sx={{height: '36%', borderRadius: '10px', aspectRatio: '4/3', m: '5px',}}>
-                    <Typography >Suggest 5</Typography>
+                <Paper sx={{width: '32%', height: '40%', borderRadius: '10px', aspectRatio: '4/3', backgroundColor: 'rgb(85, 198, 244)',}}>
+                    <Typography sx={{ml: '5px', mt: '5px', fontSize: '16px',fontFamily: 'Noto Sans JP', color: 'white'}}>Hot</Typography>
                 </Paper>
-                <Paper sx={{height: '36%', borderRadius: '10px', aspectRatio: '4/3', m: '5px',}}>
-                    <Typography >Suggest 6</Typography>
+                <Paper sx={{width: '32%', height: '40%', borderRadius: '10px', aspectRatio: '4/3', backgroundColor: 'rgb(85, 198, 244)',}}>
+                    <Typography sx={{ml: '5px', mt: '5px', fontSize: '16px',fontFamily: 'Noto Sans JP', color: 'white'}}>Podcast</Typography>
                 </Paper>
             </Box>
 
