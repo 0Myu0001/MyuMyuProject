@@ -12,10 +12,10 @@ const NotificationWindow = () => {
       sx = {{m: '5px', gridArea: '2 / 2 / 25 / 5', backgroundColor: 'rgba(255, 255, 255, 0.1)', borderRadius: '15px',}}
       elevation = {6}
     >
-      <Typography variant='h4' sx={{fontFamily: 'Noto Sans JP', fontSize: '32px', mx: '10px', color: '3f3f3f',}}>Notifications</Typography>
+      <Typography variant='h4' sx={{fontFamily: 'Roboto', fontSize: '32px', mx: '10px', color: '3f3f3f',}}>Notifications</Typography>
       <Box sx={{display: 'flex', flexDirection: 'column',}}>
         <Box sx={{p: '2%', borderBottom: '1px solid #dddde7'}}>
-          <Typography variant='body1' sx={{fontFamily: 'Noto Sans JP', fontSize: '16px', color: '3f3f3f'}}> {notifications}</Typography>
+          <Typography variant='body1' sx={{fontFamily: 'Roboto', fontSize: '16px', color: '3f3f3f'}}> {notifications}</Typography>
         </Box>
         
       </Box>

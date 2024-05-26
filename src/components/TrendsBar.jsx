@@ -9,7 +9,7 @@ const TrendsBar = () => {
             lineHeight: 1,
             borderBottom: '1px solid black',
             gridArea: ' 1 / 1 / 2 / 7',
-            fontFamily: 'Noto Sans JP',
+            fontFamily: 'Roboto',
           }}>
             #MyuMyu
           </Typography>

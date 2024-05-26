@@ -26,7 +26,7 @@ const menuButtons = [
 
 const menuStyle = {
   color: '#3f3f3f',
-  fontFamily: 'Noto Sans JP',
+  fontFamily: 'Roboto',
   textTransform: "none", 
   fontSize: "20px",
   pr: menuButtons.padding ,
@@ -54,7 +54,7 @@ const MenuList = () => {
         <Box>
           <Typography variant='body1' sx={{
             fontSize: '25px',
-            fontFamily: 'Noto Sans JP',
+            fontFamily: 'Roboto',
             p: '20px'
           }}>
             MyuMyu
@@ -66,7 +66,7 @@ const MenuList = () => {
           <Link to='/home'>
             <Button variant="text" sx={{
               color: '#3f3f3f',
-              fontFamily: 'Noto Sans JP',
+              fontFamily: 'Roboto',
               textTransform: "none", 
               fontSize: "20px",
               pr: 9.3,
@@ -79,7 +79,7 @@ const MenuList = () => {
               color: '#3f3f3f',
               textTransform: "none",
               pr:7.3,
-              fontFamily: 'Noto Sans JP',
+              fontFamily: 'Roboto',
               fontSize: "20px"
             }}> 
               <ExploreIcon /> <span style={{ marginLeft: "8px" }}>Explore</span>
@@ -90,7 +90,7 @@ const MenuList = () => {
               color: '#3f3f3f', 
               textTransform: "none", 
               pr: 7.8, 
-              fontFamily: 'Noto Sans JP',
+              fontFamily: 'Roboto',
               fontSize: "20px"
             }}> 
               <FormatListBulletedRoundedIcon /><span style={{ marginLeft: "8px" }}>Library</span>
@@ -101,7 +101,7 @@ const MenuList = () => {
               color: '#3f3f3f',
               textTransform: "none", 
               pr: 2, 
-              fontFamily: 'Noto Sans JP',
+              fontFamily: 'Roboto',
               fontSize: "20px"
             }}> 
               <NotificationsNoneRoundedIcon/> <span style={{ marginLeft: "8px" }}>Notification</span>
@@ -111,7 +111,7 @@ const MenuList = () => {
               color: '#3f3f3f', 
               textTransform: "none", 
               pr: 2, 
-              fontFamily: 'Noto Sans JP',
+              fontFamily: 'Roboto',
               fontSize: "20px"
             }}> 
               <PeopleAltRoundedIcon/><span style={{ marginLeft: "8px" }}>Community</span>
@@ -119,7 +119,7 @@ const MenuList = () => {
             <Button variant="contained" sx={{
               px: 7.3,
               background: "linear-gradient(45deg, #fff, #00f)",
-              fontFamily: 'Noto Sans JP',
+              fontFamily: 'Roboto',
               fontSize: "15px"
             }}>Create
             </Button>
@@ -132,7 +132,7 @@ const MenuList = () => {
                 color: '#3f3f3f', 
                 textTransform: "none", 
                 pr:6.5, 
-                fontFamily: 'Noto Sans JP',
+                fontFamily: 'Roboto',
                 fontSize: "20px"
               }}> 
                 <SettingsRoundedIcon/> <span style={{ marginLeft: "8px" }}>Settings</span>
@@ -161,7 +161,7 @@ const MenuList = () => {
                 color: '#3f3f3f', 
                 textTransform: "none", 
                 pr:6.5, 
-                fontFamily: 'Noto Sans JP',
+                fontFamily: 'Roboto',
                 fontSize: "20px"
               }}> 
                 <AccountCircleRoundedIcon/> <span style={{ marginLeft: "8px" }}>Account</span>

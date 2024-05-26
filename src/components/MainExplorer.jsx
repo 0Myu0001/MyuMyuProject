@@ -22,9 +22,9 @@ const MainExplorer = () => {
         flexDirection: 'column',
         overflowY: 'auto'
       }}>
-        <Typography variant='h2' sx={{fontFamily: 'Noto Sans JP',}}>Explore</Typography>
+        <Typography variant='h2' sx={{fontFamily: 'Roboto',}}>Explore</Typography>
         <Box sx={{display: 'flex', flexDirection: 'column',}}>
-          <Typography variant='h4' sx={{fontFamily: 'Noto Sans JP',}}>Suggest</Typography>
+          <Typography variant='h4' sx={{fontFamily: 'Roboto',}}>Suggest</Typography>
           <Box sx={{ display: 'flex', flexDirection: 'row', overflowX: 'auto'}}>
             <Paper sx={{m: '20px', height: '120px', aspectRatio: ' 4 / 3 '}}>
             </Paper>
@@ -39,7 +39,7 @@ const MainExplorer = () => {
           </Box>
         </Box>
         <Box sx={{display: 'flex', flexDirection: 'column',}}>
-          <Typography variant='h4' sx={{fontFamily: 'Noto Sans JP',}}>Playlists</Typography>
+          <Typography variant='h4' sx={{fontFamily: 'Roboto',}}>Playlists</Typography>
           <Box sx={{display: 'flex', flexDirection: 'row', overflowX: 'auto', }}>
             <Paper sx={{m: '20px', height: '120px', aspectRatio: ' 1 / 1 '}}>
             </Paper>
@@ -54,7 +54,7 @@ const MainExplorer = () => {
           </Box>
         </Box>
         <Box sx={{display: 'flex', flexDirection: 'column',}}>
-          <Typography variant='h4' sx={{fontFamily: 'Noto Sans JP',}}>Artists</Typography>
+          <Typography variant='h4' sx={{fontFamily: 'Roboto',}}>Artists</Typography>
           <Box sx={{display: 'flex', flexDirection: 'row', overflowX: 'auto', }}>
             <Paper sx={{m: '20px', height: '120px', aspectRatio: ' 1 / 1 ', borderRadius: '80px'}}>
             </Paper>
@@ -67,7 +67,7 @@ const MainExplorer = () => {
           </Box>
         </Box>
         <Box sx={{display: 'flex', flexDirection: 'column',}}>
-          <Typography variant='h4' sx={{fontFamily: 'Noto Sans JP',}}>Singles</Typography>
+          <Typography variant='h4' sx={{fontFamily: 'Roboto',}}>Singles</Typography>
           <Box sx={{display: 'flex', flexDirection: 'row', overflowX: 'auto', }}>
             <Paper sx={{m: '20px', height: '120px', aspectRatio: ' 1 / 1 '}}>
             </Paper>

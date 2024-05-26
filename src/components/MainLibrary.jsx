@@ -21,37 +21,49 @@ const MainLibrary = () => {
         width: '100%',
         display: 'flex',
         flexDirection: 'column',
-        flexWrap: 'nowrap',
-        overflowY: 'auto',
+        overflowY: 'auto'
       }}>
-        <Typography variant='h2' sx={{fontFamily: 'Noto Sans JP', fontSize: '50px', mx: '10px',}}>Your Library</Typography>
-        <Typography variant='h4' sx={{fontFamily: 'Noto Sans JP', fontSize: '32px', mx: '10px',}}>Playlists</Typography>
-        <Box sx={{minHeight: '250px',my: '1%', display: 'flex', flexDirection: 'row', flexWrap: 'nowrap', overflowX: 'auto',}}>
-          <Paper sx={{minWidth: '180px', pt: '180px', m: '20px'}}></Paper>
-          <Paper sx={{minWidth: '180px', pt: '180px', m: '20px'}}></Paper>
-          <Paper sx={{minWidth: '180px', pt: '180px', m: '5%'}}></Paper>
-          <Paper sx={{minWidth: '180px', pt: '180px', m: '5%'}}></Paper>
+        <Typography variant='h2' sx={{fontFamily: 'Noto Sans JP',}}>Library</Typography>
+        <Box sx={{display: 'flex', flexDirection: 'column',}}>
+          <Typography variant='h4' sx={{fontFamily: 'Noto Sans JP',}}>Playlists</Typography>
+          <Box sx={{display: 'flex', flexDirection: 'row', overflowX: 'auto', }}>
+            <Paper sx={{m: '40px', height: '180px', aspectRatio: ' 1 / 1 '}}>
+            </Paper>
+            <Paper sx={{m: '40px', height: '180px', aspectRatio: ' 1 / 1 '}}>
+            </Paper>
+            <Paper sx={{m: '40px', height: '180px', aspectRatio: ' 1 / 1 '}}>
+            </Paper>
+            <Paper sx={{m: '40px', height: '180px', aspectRatio: ' 1 / 1 '}}>
+            </Paper>
+            <Paper sx={{m: '40px', height: '180px', aspectRatio: ' 1 / 1 '}}>
+            </Paper>
+          </Box>
         </Box>
-        <Typography variant='h4' sx={{fontFamily: 'Noto Sans JP', fontSize: '32px', mx: '10px',}}>Artists</Typography>
-        <Box sx={{my: '1%', display: 'flex', flexWrap: 'wrap', flexDirection: 'row', flexWrap: 'nowrap', overflowX: 'auto',}}>
-          <Paper sx={{minWidth: '180px', pt: '180px', m: '5%', borderRadius: '50%',}}></Paper>
-          <Paper sx={{minWidth: '180px', pt: '180px', m: '5%', borderRadius: '50%',}}></Paper>
-          <Paper sx={{minWidth: '180px', pt: '180px', m: '5%', borderRadius: '50%',}}></Paper>
-          <Paper sx={{minWidth: '180px', pt: '180px', m: '5%', borderRadius: '50%',}}></Paper>
+        <Box sx={{display: 'flex', flexDirection: 'column',}}>
+          <Typography variant='h4' sx={{fontFamily: 'Noto Sans JP',}}>Artists</Typography>
+          <Box sx={{display: 'flex', flexDirection: 'row', overflowX: 'auto', }}>
+            <Paper sx={{m: '30px', height: '160px', aspectRatio: ' 1 / 1 ', borderRadius: '90px'}}>
+            </Paper>
+            <Paper sx={{m: '30px', height: '160px', aspectRatio: ' 1 / 1 ', borderRadius: '90px'}}>
+            </Paper>
+            <Paper sx={{m: '30px', height: '160px', aspectRatio: ' 1 / 1 ', borderRadius: '90px'}}>
+            </Paper>
+            <Paper sx={{m: '30px', height: '160px', aspectRatio: ' 1 / 1 ', borderRadius: '90px'}}>
+            </Paper>
+          </Box>
         </Box>
-        <Typography variant='h4' sx={{fontFamily: 'Noto Sans JP', fontSize: '32px', mx: '10px',}}>Albums</Typography>
-        <Box sx={{my: '1%', display: 'flex', flexWrap: 'wrap', flexDirection: 'row', flexWrap: 'nowrap', overflowX: 'auto',}}>
-          <Paper sx={{minWidth: '180px', pt: '180px', m: '5%'}}></Paper>
-          <Paper sx={{minWidth: '180px', pt: '180px', m: '5%'}}></Paper>
-          <Paper sx={{minWidth: '180px', pt: '180px', m: '5%'}}></Paper>
-          <Paper sx={{minWidth: '180px', pt: '180px', m: '5%'}}></Paper>
-        </Box>
-        <Typography variant='h4' sx={{fontFamily: 'Noto Sans JP', fontSize: '32px', mx: '10px',}}>Songs</Typography>
-        <Box sx={{my: '1%', display: 'flex', flexWrap: 'wrap', flexDirection: 'row', flexWrap: 'nowrap', overflowX: 'auto',}}>
-          <Paper sx={{minWidth: '180px', pt: '180px', m: '5%'}}></Paper>
-          <Paper sx={{minWidth: '180px', pt: '180px', m: '5%'}}></Paper>
-          <Paper sx={{minWidth: '180px', pt: '180px', m: '5%'}}></Paper>
-          <Paper sx={{minWidth: '180px', pt: '180px', m: '5%'}}></Paper>
+        <Box sx={{display: 'flex', flexDirection: 'column',}}>
+          <Typography variant='h4' sx={{fontFamily: 'Noto Sans JP',}}>Singles</Typography>
+          <Box sx={{display: 'flex', flexDirection: 'row', overflowX: 'auto', }}>
+            <Paper sx={{m: '30px', height: '160px', aspectRatio: ' 1 / 1 '}}>
+            </Paper>
+            <Paper sx={{m: '30px', height: '160px', aspectRatio: ' 1 / 1 '}}>
+            </Paper>
+            <Paper sx={{m: '30px', height: '160px', aspectRatio: ' 1 / 1 '}}>
+            </Paper>
+            <Paper sx={{m: '30px', height: '160px', aspectRatio: ' 1 / 1 '}}>
+            </Paper>
+          </Box>
         </Box>
       </Box>
     </Paper>

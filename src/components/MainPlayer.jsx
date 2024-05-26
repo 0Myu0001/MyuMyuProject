@@ -289,14 +289,14 @@ const MainPlayer = () => {
             <Typography variant="body1" sx={{
               fontColor: '#3f3f3f', 
               fontSize: '25px',
-              fontFamily: 'Noto Sans JP',
+              fontFamily: 'Roboto',
             }}>
               Title
             </Typography>
             <Typography variant="body1" sx={{
               fontColor: '#3f3f3f', 
               fontSize: '20px',
-              fontFamily: 'Noto Sans JP',
+              fontFamily: 'Roboto',
             }}>
               {post ? post.user_id : 'Loading...'}
             </Typography>
@@ -306,7 +306,7 @@ const MainPlayer = () => {
               ml: '20px',
               mt: 'auto',
               textTransform: "none", 
-              fontFamily: 'Noto Sans JP',
+              fontFamily: 'Roboto',
             }}>
               Follow
             </Button>
@@ -395,7 +395,7 @@ const MainPlayer = () => {
           <CardContent>
             <Typography sx={{
               color: '#3f3f3f',
-              fontFamily: 'Noto Sans JP',
+              fontFamily: 'Roboto',
             }}>
               Details
             </Typography>
@@ -405,7 +405,7 @@ const MainPlayer = () => {
               onClick={handleOpenDetails}
               sx={{
                 color: '#3278F0',
-                fontFamily: 'Noto Sans JP',
+                fontFamily: 'Roboto',
                 textTransform: "none",
               }}>Read More
             </Button>
@@ -432,13 +432,13 @@ const MainPlayer = () => {
           <CardContent>
             <Typography sx={{
               color: '#3f3f3f',
-              fontFamily: 'Noto Sans JP',
+              fontFamily: 'Roboto',
             }}>
               Comments
             </Typography>
             <Typography sx={{
               color: '#3f3f3f',
-              fontFamily: 'Noto Sans JP',
+              fontFamily: 'Roboto',
             }}>
               Here in comments.Here in comments.Here in comments.Here in 
             </Typography>
@@ -448,7 +448,7 @@ const MainPlayer = () => {
               onClick={handleOpenComments}
               sx={{
                 color: '#3278F0',
-                fontFamily: 'Noto Sans JP',
+                fontFamily: 'Roboto',
                 textTransform: "none",
               }}
             >Read More

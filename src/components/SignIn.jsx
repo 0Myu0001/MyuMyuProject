@@ -24,7 +24,7 @@ const SignIn = () => {
         flexDirection: 'column',
       }}
     >
-      <Typography variant="h4" sx={{fontFamily: 'Noto Sans', my: '5px', mx: 'auto', color: '#3F3F3F'}}>Sign in to MyuMyu</Typography>
+      <Typography variant="h4" sx={{fontFamily: 'Roboto', my: '5px', mx: 'auto', color: '#3F3F3F'}}>Sign in to MyuMyu</Typography>
       <TextField id="standard-basic" label="Username or Mail address" variant="standard"
         sx={{
           mx: 'auto',
@@ -40,17 +40,17 @@ const SignIn = () => {
         }}
       />
       <FormGroup sx={{ml: '12.5%',}}>
-        <FormControlLabel control={<Switch defaultChecked />} label={<Typography sx={{fontFamily: 'Noto Sans JP',}}>Remember me</Typography>}/>
+        <FormControlLabel control={<Switch defaultChecked />} label={<Typography sx={{fontFamily: 'Roboto',}}>Remember me</Typography>}/>
       </FormGroup>
-      <Button type='submit' variant='contained' sx={{mx: 'auto', my: '10px', width: '40%',textTransform: 'none', fontFamily: 'Noto Sans jp',}}>Sign in</Button>
+      <Button type='submit' variant='contained' sx={{mx: 'auto', my: '10px', width: '40%',textTransform: 'none', fontFamily: 'Roboto',}}>Sign in</Button>
       <Box sx={{display: 'flex', justifyContent: 'space-evenly'}}>
-        <Button variant='outlined' sx={{my: '10px', width: '40%', textTransform: 'none', fontFamily: 'Noto Sans jp',}} startIcon={<GoogleIcon />} href="https://www.google.com">Sign in with Google</Button>
-        <Button variant='outlined' sx={{my: '10px', width: '40%', textTransform: 'none', fontFamily: 'Noto Sans jp',}} startIcon={<AppleIcon />} href="https://www.google.com">Sign in with Apple</Button>
+        <Button variant='outlined' sx={{my: '10px', width: '40%', textTransform: 'none', fontFamily: 'Roboto',}} startIcon={<GoogleIcon />} href="https://www.google.com">Sign in with Google</Button>
+        <Button variant='outlined' sx={{my: '10px', width: '40%', textTransform: 'none', fontFamily: 'Roboto',}} startIcon={<AppleIcon />} href="https://www.google.com">Sign in with Apple</Button>
       </Box>
       <Typography variant="h6" sx={{mx: 'auto', my: '10px', color: '#3F3F3F'}}>or</Typography>
       <Box sx={{mx: 'auto', my: '10px', width: '40%',}}>
         <Link to="/signin/signup" style={{ textDecoration: 'none', color: 'inherit',}}>
-          <Button variant='contained' sx={{textTransform: 'none', fontFamily: 'Noto Sans jp', width: '100%'}}>
+          <Button variant='contained' sx={{textTransform: 'none', fontFamily: 'Roboto', width: '100%'}}>
               Sign up
           </Button>
         </Link>
