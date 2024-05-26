@@ -14,8 +14,8 @@ import Box from '@mui/material/Box';
 const style = {
   height: '100vh',
   width: '100vw',
-  backgroundColor: '#EBF5FB',
-  fontFamily: 'Noto Sans JP',
+  backgroundColor: '#F2F8FF',
+  fontFamily: 'Roboto',
   color: '#3F3F3F',
   display: 'grid',
   gridTemplateColumns: 'repeat(6, 1fr)',
