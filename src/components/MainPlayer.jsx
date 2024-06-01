@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { usePlayer } from './PlayerProvider';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Slider from '@mui/material/Slider';
@@ -125,11 +126,10 @@ const modalStyle = {
 
 
 const MainPlayer = () => {
+  const {post, position, duration, isFavorite, setIsFavorite, isPause, handleClickPause,  handlePositionChange, handlePositionChangeCommitted, draggingValue, handleClickRepeat, handleClickShuffle, isRepeat, isShuffle} = usePlayer();
+
   const [value, setValue] = React.useState(0);
-  const [position, setPosition] = React.useState(0);
-  const [duration, setDuration] = React.useState(0);
   const [isHovered, setIsHovered] = React.useState(false);
-  const [isFavorite, setIsFavorite] = React.useState(false);
   const [openDetails, setOpenDetails] = React.useState(false);
   const [openComments, setOpenComments] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -146,10 +146,6 @@ const MainPlayer = () => {
     setAnchorEl(null);
   };
 
-
-  const [post, setPost] = React.useState(null);
-  const postId = '*00000000*';
-
   const handleOpenDetails = () => setOpenDetails(true);
   const handleOpenComments =() => setOpenComments(true);
   const handleCloseDetails = () => setOpenDetails(false);
@@ -158,64 +154,6 @@ const MainPlayer = () => {
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
-  };
-
-  React.useEffect(() => {
-    fetch(`http://127.0.0.1:8000/api/post/${postId}/`)
-      .then((res) => res.json())
-      .then(data => setPost(data))
-  } ,[postId]);
-
-  const [audio, setAudio] = React.useState(null);
-  const [isPause, setIsPause] = React.useState(false);
-  const handleClickPause = () => setIsPause(!isPause);
-
-  React.useEffect(() => {
-    if (post) {
-      setAudio(new Audio(`http://127.0.0.1:8000${post.post}`));
-    }
-  }, [post]);
-
-  React.useEffect(() => {
-    if (audio) {
-      isPause ? audio.play(): audio.pause();
-    }
-  }, [isPause, audio]);
-
-  React.useEffect(() => {
-    if (audio) {
-      setDuration(audio.duration);
-  
-      audio.ontimeupdate = () => {
-        setPosition(audio.currentTime);
-      };
-    }
-  }, [audio]);
-
-  React.useEffect(() => {
-    if (audio) {
-      const handleCanPlayThrough = () => {
-        setDuration(audio.duration);
-      };
-  
-      audio.addEventListener('canplaythrough', handleCanPlayThrough);
-        
-      return () => {
-        audio.removeEventListener('canplaythrough', handleCanPlayThrough);
-      };
-    }
-  }, [audio]);
-
-  const handlePositionChange = (_, value) => {
-    if (audio) {
-      setPosition(value);
-    }
-  };
-
-  const handlePositionChangeCommitted = (_, value) => {
-    if (audio) {
-      audio.currentTime = value;
-    }
   };
 
   return(
@@ -259,7 +197,8 @@ const MainPlayer = () => {
           }}
           onClick={handleClickPause}
           >
-            {post && <img src={`http://127.0.0.1:8000${post.post_image}`} alt="Post Image" style={{width: '100%', height: '100%', objectFit: 'cover', borderRadius: '10px',}} />}
+            {post && <img src={post.post_image} alt="Post Image" style={{width: '100%', height: '100%', objectFit: 'cover', borderRadius: '10px',}} />}
+            
           </Paper>
           {isHovered && (isPause ? <PauseRoundedIcon fontSize="large" sx={{position: 'absolute', color: '#FFFFFF',}} /> : <PlayArrowRoundedIcon fontSize='large' sx={{position: 'absolute', color: '#FFFFFF',}} />)}
         </Box>
@@ -274,11 +213,20 @@ const MainPlayer = () => {
           <KeyboardDoubleArrowRightRoundedIcon fontSize="inherit" />
         </IconButton>
         <Box sx={{my: '20px',gridArea: '5 / 11 / 7 / 12', display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly'}}>
-          <IconButton aria-label="repeat" size="medium" sx={{ m: 'auto' }}>
-            <RepeatRoundedIcon fontSize="inherit" />
+          <IconButton aria-label="repeat" size="medium" onClick={handleClickRepeat} sx={{ m: 'auto' }}>
+            {
+              isRepeat === 0 ? (
+                <RepeatRoundedIcon fontSize="inherit" />
+              ) : isRepeat === 1 ? (
+                <RepeatRoundedIcon fontSize="inherit" color="primary" />
+                
+              ) : (
+                <RepeatOneRoundedIcon fontSize="inherit" color="primary" />
+              )
+            }
           </IconButton>
-          <IconButton aria-label="shuffle" size="medium" sx={{ m: 'auto' }}>
-            <ShuffleRoundedIcon fontSize="inherit" />
+          <IconButton aria-label="shuffle" size="medium" onClick={handleClickShuffle} sx={{ m: 'auto' }}>
+            {isShuffle ? <ShuffleRoundedIcon fontSize="inherit" color="primary" /> : <ShuffleRoundedIcon fontSize="inherit" />}
           </IconButton>
         </Box>
         <Box sx={{gridArea: '7 / 2 / 8 / 3 '}}>
@@ -349,12 +297,12 @@ const MainPlayer = () => {
         <Slider
           aria-label="time-indicator"
           size="small"
-          value={position}
+          value={draggingValue !== null ? draggingValue : position}
+          onChange={handlePositionChange}
+          onChangeCommitted={handlePositionChangeCommitted}
           min={0}
           step={1}
           max={duration}
-          onChange={handlePositionChange}
-          onChangeCommitted={handlePositionChangeCommitted}
           sx={{
             gridArea: '8 / 2 / 9 / 12',
             color: 'rgba(0,0,0,0.87)',

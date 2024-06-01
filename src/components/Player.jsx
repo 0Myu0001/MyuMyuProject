@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
+import { usePlayer } from './PlayerProvider';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper'
 import Typography from '@mui/material/Typography';
@@ -33,72 +34,9 @@ const TinyText = styled(Typography)({
 });
 
 const Player = () => {
-  const [position, setPosition] = React.useState(0);
-  const [duration, setDuration] = React.useState(0);
-  const [isFavorite, setIsFavorite] = React.useState(false);
-
-  const [post, setPost] = React.useState(null);
-  const postId = '*00000000*' ;
+  const {post, position, duration, isFavorite, setIsFavorite, isPause, handleClickPause,  handlePositionChange, handlePositionChangeCommitted, draggingValue, handleClickRepeat, handleClickShuffle, isRepeat, isShuffle} = usePlayer();
 
   const handleClickFavorite = () => setIsFavorite(!isFavorite);
-
-  React.useEffect(() => {
-    fetch(`http://127.0.0.1:8000/api/post/${postId}/`)
-      .then((res) => res.json())
-      .then(data => setPost(data))
-  }, [postId]);
-
-  const [audio, setAudio] = React.useState(null);
-  const [isPause, setIsPause] = React.useState(false);
-  const handleClickPause = () => setIsPause(!isPause);
-
-  React.useEffect(() => {
-    if (post) {
-      setAudio(new Audio(`http://127.0.0.1:8000${post.post}`));
-    }
-  }, [post]);
-
-  React.useEffect(() => {
-    if (audio) {
-      isPause ? audio.play(): audio.pause();
-    }
-  }, [isPause, audio]);
-
-  React.useEffect(() => {
-    if (audio) {
-      setDuration(audio.duration);
-  
-      audio.ontimeupdate = () => {
-        setPosition(audio.currentTime);
-      };
-    }
-  }, [audio]);
-
-  React.useEffect(() => {
-    if (audio) {
-      const handleCanPlayThrough = () => {
-        setDuration(audio.duration);
-      };
-  
-      audio.addEventListener('canplaythrough', handleCanPlayThrough);
-  
-      return () => {
-        audio.removeEventListener('canplaythrough', handleCanPlayThrough);
-      };
-    }
-  }, [audio]);
-
-  const handlePositionChange = (_, value) => {
-    if (audio) {
-      setPosition(value);
-    }
-  };
-
-  const handlePositionChangeCommitted = (_, value) => {
-    if (audio) {
-      audio.currentTime = value;
-    }
-  };
 
   return(
     <Paper sx={{
@@ -121,7 +59,7 @@ const Player = () => {
             aspectRatio: '1/1',
           }} 
         >
-          {post && <img src={`http://127.0.0.1:8000${post.post_image}`} alt="Post Image" style={{width: '100%', height: '100%', objectFit: 'contain'}} />}
+          {post && <img src={post.post_image} alt="Post" style={{width: '100%', height: '100%', objectFit: 'contain'}} />}
         </Paper>
       </Box>
       <Box sx={{gridArea: '2 / 5 / 3 / 9', display: 'flex', flexDirection: 'column',}}>
@@ -137,18 +75,27 @@ const Player = () => {
           <IconButton aria-label="skip" size="large" sx={{m: 'auto',}}><KeyboardDoubleArrowRightRoundedIcon fontSize="inherit" /></IconButton>
         </Box>
         <Box sx={{ml: 'auto',}}>
-          <IconButton aria-label="repeat" size="medium" sx={{ m: 'auto' }}>
-            <RepeatRoundedIcon fontSize="inherit" />
+          <IconButton aria-label="repeat" size="medium" onClick={handleClickRepeat} sx={{ m: 'auto' }}>
+            {
+              isRepeat === 0 ? (
+                <RepeatRoundedIcon fontSize="inherit" />
+              ) : isRepeat === 1 ? (
+                <RepeatRoundedIcon fontSize="inherit" color="primary" />
+                
+              ) : (
+                <RepeatOneRoundedIcon fontSize="inherit" color="primary" />
+              )
+            }
           </IconButton>
-          <IconButton aria-label="shuffle" size="medium" sx={{ m: 'auto' }}>
-            <ShuffleRoundedIcon fontSize="inherit" />
+          <IconButton aria-label="shuffle" size="medium" onClick={handleClickShuffle} sx={{ m: 'auto' }}>
+            {isShuffle ? <ShuffleRoundedIcon fontSize="inherit" color="primary" /> : <ShuffleRoundedIcon fontSize="inherit" />}
           </IconButton>
         </Box>
       </Box>
       <Slider
         aria-label="time-indicator"
         size="small"
-        value={position}
+        value={draggingValue !== null ? draggingValue : position}
         min={0}
         step={1}
         max={duration}
