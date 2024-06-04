@@ -1,13 +1,17 @@
 import * as React from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Paper, TextField, Button, Box, Typography } from '@mui/material';
 
 const SignUp3 = () => {
   const [username, setUserName] = React.useState('');
   const [email, setEmail] = React.useState('');
   const [age, setAge] = React.useState('');
-  const [isNextClicked, setIsNextClicked] = React.useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
-  const handleNextClick = () => setIsNextClicked(true);
+  if (!location.state || !location.state.fromSignUp2) {
+    navigate('/signin/signup/');
+  };
 
   const handleUsernameChange = (event) => {
     setUserName(event.target.value);

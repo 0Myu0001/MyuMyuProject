@@ -11,8 +11,33 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import GoogleIcon from '@mui/icons-material/Google';
 import AppleIcon from '@mui/icons-material/Apple';
 
+const handleSignIn = async (event) => {
+  event.preventDefault();
+
+  const username = event.target.username.value;
+  const password = event.target.password.value;
+
+  const response = await fetch('http://localhost:8000/api/auth/token/', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ username, password }),
+  });
+
+  if (response.ok) {
+    const data = await response.json();
+    localStorage.setItem('token', data.access);
+    localStorage.setItem('refresh', data.refresh);
+    window.location.href = '/home';
+  } else {
+    console.error('Failed to sign in');
+  }
+};
+
 
 const SignIn = () => {
+
   return (
     <Paper 
       elevation={6}
@@ -42,7 +67,7 @@ const SignIn = () => {
       <FormGroup sx={{ml: '12.5%',}}>
         <FormControlLabel control={<Switch defaultChecked />} label={<Typography sx={{fontFamily: 'Roboto',}}>Remember me</Typography>}/>
       </FormGroup>
-      <Button type='submit' variant='contained' sx={{mx: 'auto', my: '10px', width: '40%',textTransform: 'none', fontFamily: 'Roboto',}}>Sign in</Button>
+      <Button type='submit' variant='contained' onClick={handleSignIn} sx={{mx: 'auto', my: '10px', width: '40%',textTransform: 'none', fontFamily: 'Roboto',}}>Sign in</Button>
       <Box sx={{display: 'flex', justifyContent: 'space-evenly'}}>
         <Button variant='outlined' sx={{my: '10px', width: '40%', textTransform: 'none', fontFamily: 'Roboto',}} startIcon={<GoogleIcon />} href="https://www.google.com">Sign in with Google</Button>
         <Button variant='outlined' sx={{my: '10px', width: '40%', textTransform: 'none', fontFamily: 'Roboto',}} startIcon={<AppleIcon />} href="https://www.google.com">Sign in with Apple</Button>
