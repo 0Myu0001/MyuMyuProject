@@ -1,49 +1,57 @@
 import * as React from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Paper, TextField, Button, Box, Typography } from '@mui/material';
 
-const SignUp2 = () => {
-  const [username, setUserName] = React.useState('');
-  const [email, setEmail] = React.useState('');
-  const [age, setAge] = React.useState('');
-  const [isNextClicked, setIsNextClicked] = React.useState(false);
+const SignUp2 = ({ handleNext }) => {
+  const [password, setPassword] = React.useState('');
+  const [reEnteredPassword, setReEnteredPassword] = React.useState('');
+  const location = useLocation();
+  const navigate = useNavigate();
 
-  const handleNextClick = () => setIsNextClicked(true);
-
-  const handleUsernameChange = (event) => {
-    setUserName(event.target.value);
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
   };
 
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
-  };
-
-  const handleAgeChange = (event) => {
-    setAge(event.target.value);
+  const handleReEnteredPasswordChange = (event) => {
+    setReEnteredPassword(event.target.value);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
     const data = {
-      user_id: username,
-      user_email: email,
-      age: age,
+      user_id: password,
     };
 
-    fetch('http://localhost:8000/api/user/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    })
-    .then(response => response.json())
-    .then(data => {
-      console.log('Success:', data);
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-    });
+    if (password === reEnteredPassword) {
+      fetch('http://localhost:8000/api/user_strict_information/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Success:', data);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+    } else if (password.length < 8) {
+      alert('Password must be at least 8 characters');
+      return;
+    } else if (password.length > 20) { 
+      alert('Password must be at most 20 characters');
+      return;
+    } else if (!password.match(/^[a-zA-Z0-9]+$-_/)) {
+      alert('Password must be alphanumeric');
+      return;
+    } else if (password !== reEnteredPassword) {
+      alert('Password does not match');
+      return;
+    }
+
   };
 
   return (
@@ -63,8 +71,8 @@ const SignUp2 = () => {
         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
           <TextField
             label="Password"
-            value={username}
-            onChange={handleUsernameChange}
+            value={password}
+            onChange={handlePasswordChange}
             margin="normal"
             variant='standard'
             type='password'
@@ -86,12 +94,24 @@ const SignUp2 = () => {
               mx: 'auto',
             }}
           >
-            ↑Other people can see this name. Please think carefully for you safe.
+            ↑Password must be at least 8 characters, at most 20 characters.
+          </Typography>
+          <Typography 
+            variant='caption text' 
+            sx={{
+              fontFamily: 'Noto Sans jp', 
+              color: '#3F3F3F', 
+              fontSize: '14px', 
+              textAlign: 'center',
+              mx: 'auto',
+            }}
+          >
+            You can also use - and _ 
           </Typography>
           <TextField
             label="Re-enter Password"
-            value={email}
-            onChange={handleEmailChange}
+            value={reEnteredPassword}
+            onChange={handleReEnteredPasswordChange}
             margin="normal"
             variant='standard'
             type='password'
@@ -106,7 +126,7 @@ const SignUp2 = () => {
         </Box>
         <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
           <Button 
-            variant='outlined' 
+            variant='standard' 
             sx={{
               mx: 'auto',
               my: '10px', 
@@ -116,17 +136,29 @@ const SignUp2 = () => {
             }} 
             href="https://www.google.com"
           >I'm not Robot</Button>
-          <Button type='submit' variant='contained' 
-            sx={{
-              mx: 'auto', 
-              my: '10px', 
-              width: '40%',
-              textTransform: 'none', 
-              fontFamily: 'Noto Sans jp',
-            }}
-          >
-            Next
-          </Button>
+          <Box sx={{display: 'flex', justifyContent: 'space-evenly'}}>
+            <Button type='submit' variant='outlined' onClick={handleNext}
+              sx={{
+                my: '10px', 
+                width: '40%',
+                textTransform: 'none', 
+                fontFamily: 'Noto Sans jp',
+              }}
+            >
+              Prev
+            </Button>
+            <Button type='submit' variant='contained' onClick={handleNext}
+              sx={{
+                my: '10px', 
+                width: '40%',
+                textTransform: 'none', 
+                fontFamily: 'Noto Sans jp',
+              }}
+            >
+              Next
+            </Button>
+          </Box>
+          
         </Box>
       </form>
     </Paper>

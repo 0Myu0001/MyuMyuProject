@@ -1,15 +1,13 @@
 import * as React from 'react';
+import { useNavigate} from 'react-router-dom';
 import { Paper, TextField, Button, Box, Typography } from '@mui/material';
 import GoogleIcon from '@mui/icons-material/Google';
 import AppleIcon from '@mui/icons-material/Apple';
 
-const SignUp = () => {
+const SignUp = ({ handleNext }) => {
   const [userId, setUserId] = React.useState('');
   const [email, setEmail] = React.useState('');
   const [age, setAge] = React.useState('');
-  const [isNextClicked, setIsNextClicked] = React.useState(false);
-
-  const handleNextClick = () => setIsNextClicked(true);
 
   const handleUsernameChange = (event) => {
     setUserId(event.target.value);
@@ -120,7 +118,7 @@ const SignUp = () => {
         />
         </Box>
         <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-          <Button type='submit' variant='contained' 
+          <Button type='submit' variant='contained' onClick={handleNext}
             sx={{
               mx: 'auto', 
               my: '10px', 

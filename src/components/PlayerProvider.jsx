@@ -30,7 +30,7 @@ const PlayerProvider = ({ children }) => {
   const [post, setPost] = React.useState(null);
 
   React.useEffect(() => {
-    fetch(`http://127.0.0.1:8000/api/post/${postId}/`)
+    fetch(`http://192.168.11.14:8000/api/post/${postId}/`)
       .then((res) => res.json())
       .then(data => setPost(data))
   } ,[postId]);

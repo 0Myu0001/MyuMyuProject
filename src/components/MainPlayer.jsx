@@ -239,7 +239,7 @@ const MainPlayer = () => {
               fontSize: '25px',
               fontFamily: 'Roboto',
             }}>
-              Title
+              {post ? post.post_title : 'Loading...'}
             </Typography>
             <Typography variant="body1" sx={{
               fontColor: '#3f3f3f', 
