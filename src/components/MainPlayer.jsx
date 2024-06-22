@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { usePlayer } from './PlayerProvider';
+import { useBreakPoints } from './BreakPoint';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Slider from '@mui/material/Slider';
@@ -12,8 +13,6 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import PropTypes from 'prop-types';
 import { styled } from '@mui/material/styles';
-import useTheme from '@mui/material/styles/useTheme';
-import useMediaQuery from '@mui/material/useMediaQuery';
 import Modal from '@mui/material/Modal';
 import KeyboardDoubleArrowRightRoundedIcon from '@mui/icons-material/KeyboardDoubleArrowRightRounded';
 import KeyboardDoubleArrowLeftRoundedIcon from '@mui/icons-material/KeyboardDoubleArrowLeftRounded';
@@ -126,19 +125,16 @@ const modalStyle = {
 
 
 const MainPlayer = () => {
-  const {post, position, duration, isFavorite, setIsFavorite, isPause, handleClickPause,  handlePositionChange, handlePositionChangeCommitted, draggingValue, handleClickRepeat, handleClickShuffle, isRepeat, isShuffle} = usePlayer();
+  const {post, user, position, duration, isFavorite, setIsFavorite, isPause, handleClickPause,  handlePositionChange, handlePositionChangeCommitted, draggingValue, handleClickRepeat, handleClickShuffle, isRepeat, isShuffle, value, handleChange} = usePlayer();
 
-  const [value, setValue] = React.useState(0);
   const [isHovered, setIsHovered] = React.useState(false);
   const [openDetails, setOpenDetails] = React.useState(false);
   const [openComments, setOpenComments] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
 
-  const theme = useTheme();
-  const mdMatches = useMediaQuery(theme.breakpoints.up('(min-width:960px)'));
-  const smMatches = useMediaQuery(theme.breakpoints.up('(min-width:450px)'));
+  const { mdMatches, smMatches } = useBreakPoints();
 
-  const open = Boolean(anchorEl);
+  const open = Boolean(anchorEl); 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -151,10 +147,6 @@ const MainPlayer = () => {
   const handleCloseDetails = () => setOpenDetails(false);
   const handleCloseComments = () => setOpenComments(false);
   const handleClickFavorite = () => setIsFavorite(!isFavorite);
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
 
   return(
     <Paper 
@@ -230,7 +222,7 @@ const MainPlayer = () => {
           </IconButton>
         </Box>
         <Box sx={{gridArea: '7 / 2 / 8 / 3 '}}>
-          <img />
+          {post && (user ? <img src={user.user_image} alt='user image' style={{height: '100%', width: '100%', borderRadius: '50%'}}/> : null)}
         </Box>
         <Box sx={{gridArea: '7 / 3 / 8 / 9', display: 'flex'}}>
           <Box sx={{display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly'}}>
