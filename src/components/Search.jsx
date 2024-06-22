@@ -38,25 +38,19 @@ const Search = () => {
             }}>
                 clear
             </Button>
-            <Typography sx={{fontFamily: 'Roboto'}}>Realtime Update Chart</Typography>
-            <Box sx={{ flexGrow: 1, display: 'flex', flexWrap: 'wrap', gap: '0', justifyContent: 'space-around'}}>
-                <Paper sx={{width: '32%', height: '40%', borderRadius: '10px', aspectRatio: '4/3', backgroundColor: 'rgb(85, 198, 244)',}}>
-                    <Typography sx={{ml: '5px', mt: '5px', fontSize: '16px',fontFamily: 'Roboto', color: 'white'}}>Featured</Typography>
+            <Typography sx={{m: '5px' ,fontFamily: 'Roboto'}}>Realtime Update Chart</Typography>
+            <Box sx={{ flexGrow: 1, display: 'flex', flexWrap: 'wrap', gap: '0', justifyContent: 'space-evenly'}}>
+                <Paper sx={{ height: '40%', borderRadius: '5px', aspectRatio: '1/1', backgroundColor: 'rgb(85, 198, 244)',}}>
+                    <Typography sx={{ml: '5px', mt: '5px', fontSize: '16px',fontFamily: 'Roboto', color: 'white'}}>All Users</Typography>
+                    <Typography sx={{ml: '5px', mt: '5px', fontSize: '240%',fontFamily: 'Roboto', color: 'white'}}> a DAY</Typography>
                 </Paper>
-                <Paper sx={{width: '32%', height: '40%', borderRadius: '10px', aspectRatio: '4/3', backgroundColor: 'rgb(234, 75, 63)',}}>
-                    <Typography sx={{ml: '5px', mt: '5px', fontSize: '16px',fontFamily: 'Roboto', color: 'white'}}>J-Pop</Typography>
+                <Paper sx={{ height: '40%', borderRadius: '5px', aspectRatio: '1/1', backgroundColor: 'rgb(42, 150, 242)',}}>
+                    <Typography sx={{ml: '5px', mt: '5px', fontSize: '16px',fontFamily: 'Roboto', color: 'white'}}>All Users</Typography>
+                    <Typography sx={{my: '5px', mt: '5px', fontSize: '200%',fontFamily: 'Roboto', color: 'white'}}> a WEEK</Typography>
                 </Paper>
-                <Paper sx={{width: '32%', height: '40%', borderRadius: '10px', aspectRatio: '4/3', backgroundColor: 'rgb(0, 105, 240)',}}>
-                    <Typography sx={{ml: '5px', mt: '5px', fontSize: '16px',fontFamily: 'Roboto', color: 'white'}}>K-Pop</Typography>
-                </Paper>
-                <Paper sx={{width: '32%', height: '40%', borderRadius: '10px', aspectRatio: '4/3', backgroundColor: 'rgb(85, 198, 244)',}}>
-                    <Typography sx={{ml: '5px', mt: '5px', fontSize: '16px',fontFamily: 'Roboto', color: 'white'}}>Certificated</Typography>
-                </Paper>
-                <Paper sx={{width: '32%', height: '40%', borderRadius: '10px', aspectRatio: '4/3', backgroundColor: 'rgb(85, 198, 244)',}}>
-                    <Typography sx={{ml: '5px', mt: '5px', fontSize: '16px',fontFamily: 'Roboto', color: 'white'}}>Hot</Typography>
-                </Paper>
-                <Paper sx={{width: '32%', height: '40%', borderRadius: '10px', aspectRatio: '4/3', backgroundColor: 'rgb(85, 198, 244)',}}>
-                    <Typography sx={{ml: '5px', mt: '5px', fontSize: '16px',fontFamily: 'Roboto', color: 'white'}}>Podcast</Typography>
+                <Paper sx={{ height: '40%', borderRadius: '5px', aspectRatio: '1/1', backgroundColor: 'rgb(0, 105, 240)',}}>
+                    <Typography sx={{ml: '5px', mt: '5px', fontSize: '16px',fontFamily: 'Roboto', color: 'white'}}>All Users</Typography>
+                    <Typography sx={{my: '5px', mt: '5px', fontSize: '180%',fontFamily: 'Roboto', color: 'white'}}> a MONTH</Typography>
                 </Paper>
             </Box>
 
