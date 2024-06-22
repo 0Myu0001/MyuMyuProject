@@ -7,6 +7,7 @@ import Home from './home';
 import reportWebVitals from './reportWebVitals';
 import Login from './Login';
 import { PlayerProvider } from './components/PlayerProvider';
+import { BreakPointsProvider } from './components/BreakPoint';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -14,11 +15,13 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <PlayerProvider>
-        <Routes>
-          <Route path='/home' element={<Home />}/>
-          <Route path='/*' element={<App />}/>
-          <Route path='/signin/*' element={<Login />} />
-        </Routes>
+        <BreakPointsProvider>
+          <Routes>
+            <Route path='/home' element={<Home />}/>
+            <Route path='/*' element={<App />}/>
+            <Route path='/signin/*' element={<Login />} />
+          </Routes>
+        </BreakPointsProvider>
       </PlayerProvider>
     </BrowserRouter>
 
