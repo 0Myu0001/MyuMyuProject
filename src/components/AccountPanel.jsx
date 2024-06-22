@@ -30,7 +30,7 @@ const StyledTab = styled((props) => <Tab disableRipple {...props} />)(
     marginRight: theme.spacing(1),
     color: 'rgba(63, 63, 63, 0.5)',
     '&.Mui-selected': {
-      color: '#3f3f3f',
+      color: '#203F6F',
     },
     '&.Mui-focusVisible': {
       backgroundColor: 'rgba(100, 95, 228, 0.32)',
@@ -69,23 +69,23 @@ const AccountPanel = () => {
         <Paper sx={{gridArea: '1 / 1 / 5 / 5', borderRadius: '15px', width: '100%', pt: '100%',}}>
         </Paper>
         {/* get data from django databases */}
-        <Typography sx={{gridArea: '2 / 5 / 3 / 10', fontFamily: 'Roboto', fontSize: '32px', my: 'auto', mx: '10px', color: '#3f3f3f',}}>
+        <Typography sx={{gridArea: '2 / 5 / 3 / 10', fontFamily: 'Roboto', fontSize: '32px', my: 'auto', mx: '10px', color: '#203F6F',}}>
           { userProfiles ? userProfiles.user_name : 'Loading...' }
         </Typography> 
-        <Typography sx={{gridArea: '3 / 5 / 4 / 10', fontFamily: 'Roboto', fontSize: '24px', my: 'auto', mx: '10px', color: '#3f3f3f',}}>
+        <Typography sx={{gridArea: '3 / 5 / 4 / 10', fontFamily: 'Roboto', fontSize: '24px', my: 'auto', mx: '10px', color: '#203F6F',}}>
           { userProfiles ? userProfiles.user_id : 'Loading...' }
         </Typography>
         <Box sx={{gridArea: '4 / 6 / 5 / 8', display: 'flex', flexDirection: 'column',}}>
-          <Typography variant='body1' sx={{fontFamily: 'Roboto', fontSize: '16px', m: 'auto', color: '#3f3f3f',}}>Following</Typography>
-          <Typography variant='body1' sx={{fontFamily: 'Roboto', fontSize: '16px', m: 'auto', color: '#3f3f3f',}}>-.--M</Typography>
+          <Typography variant='body1' sx={{fontFamily: 'Roboto', fontSize: '16px', m: 'auto', color: '#203F6F',}}>Following</Typography>
+          <Typography variant='body1' sx={{fontFamily: 'Roboto', fontSize: '16px', m: 'auto', color: '#203F6F',}}>-.--M</Typography>
         </Box>
         <Box sx={{gridArea: '4 / 8 / 5 / 10', display: 'flex', flexDirection: 'column',}}>
-          <Typography variant='body1' sx={{fontFamily: 'Roboto', fontSize: '16px', m: 'auto', color: '#3f3f3f',}}>Followers</Typography>
-          <Typography variant='body1' sx={{fontFamily: 'Roboto', fontSize: '16px', m: 'auto', color: '#3f3f3f',}}>-.--M</Typography>
+          <Typography variant='body1' sx={{fontFamily: 'Roboto', fontSize: '16px', m: 'auto', color: '#203F6F',}}>Followers</Typography>
+          <Typography variant='body1' sx={{fontFamily: 'Roboto', fontSize: '16px', m: 'auto', color: '#203F6F',}}>-.--M</Typography>
         </Box>
         <Box sx={{gridArea: '4 / 10 / 5 / 12', display: 'flex', flexDirection: 'column',}}>
-          <Typography variant='body1' sx={{fontFamily: 'Roboto', fontSize: '16px', m: 'auto', color: '#3f3f3f',}}>Likes</Typography>
-          <Typography variant='body1' sx={{fontFamily: 'Roboto', fontSize: '16px', m: 'auto', color: '#3f3f3f',}}>-.--M</Typography>
+          <Typography variant='body1' sx={{fontFamily: 'Roboto', fontSize: '16px', m: 'auto', color: '#203F6F',}}>Likes</Typography>
+          <Typography variant='body1' sx={{fontFamily: 'Roboto', fontSize: '16px', m: 'auto', color: '#203F6F',}}>-.--M</Typography>
         </Box>
         <StyledTabs
           value={value}
@@ -93,9 +93,9 @@ const AccountPanel = () => {
           aria-label="styled tabs example"
           sx ={{gridArea: '5 / 1 / 6 / 13', m: 'auto',}}
         >
-          <StyledTab label="Singles" sx={{fontFamily: 'Roboto',}} />
-          <StyledTab label="Albums" sx={{fontFamily: 'Roboto',}} />
-          <StyledTab label="Playlists" sx={{fontFamily: 'Roboto',}} />
+          <StyledTab label="Singles" sx={{fontFamily: 'Roboto', color: 'rgba(32, 63, 111, 0.5)', }} />
+          <StyledTab label="Albums" sx={{fontFamily: 'Roboto', color: 'rgba(32, 63, 111, 0.5)', }} />
+          <StyledTab label="Playlists" sx={{fontFamily: 'Roboto', color: 'rgba(32, 63, 111, 0.5)', }} />
         </StyledTabs>
       </Box>
     </Paper>

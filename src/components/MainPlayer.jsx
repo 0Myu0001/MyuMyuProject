@@ -55,7 +55,7 @@ const StyledTab = styled((props) => <Tab disableRipple {...props} />)(
     marginRight: theme.spacing(1),
     color: 'rgba(63, 63, 63, 0.5)',
     '&.Mui-selected': {
-      color: '#3f3f3f',
+      color: '#203f6f',
     },
     '&.Mui-focusVisible': {
       backgroundColor: 'rgba(100, 95, 228, 0.32)',
@@ -166,8 +166,8 @@ const MainPlayer = () => {
           aria-label="styled tabs example"
           sx ={{gridArea: '1 / 1 / 2 / 13', m: 'auto',}}
         >
-          <StyledTab label="Recommend" sx={{fontFamily: 'Roboto',}} />
-          <StyledTab label="Playlist" sx={{fontFamily: 'Roboto',}} />
+          <StyledTab label="Recommend" sx={{fontFamily: 'Roboto', color: 'rgba(32, 63, 111, 0.5)'}} />
+          <StyledTab label="Playlist" sx={{fontFamily: 'Roboto', color: 'rgba(32, 63, 111, 0.5)'}} />
         </StyledTabs>
         <Box sx={{
           gridArea: '2 / 4 / 7 / 10',
@@ -227,14 +227,14 @@ const MainPlayer = () => {
         <Box sx={{gridArea: '7 / 3 / 8 / 9', display: 'flex'}}>
           <Box sx={{display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly'}}>
             <Typography variant="body1" sx={{
-              fontColor: '#3f3f3f', 
+              color: '#203f6f', 
               fontSize: '25px',
               fontFamily: 'Roboto',
             }}>
               {post ? post.post_title : 'Loading...'}
             </Typography>
             <Typography variant="body1" sx={{
-              fontColor: '#3f3f3f', 
+              color: '#203f6f', 
               fontSize: '20px',
               fontFamily: 'Roboto',
             }}>
@@ -267,24 +267,24 @@ const MainPlayer = () => {
             <MoreVertRoundedIcon />
           </IconButton>
           <Menu
-              id="simple-menu"
-              anchorEl={anchorEl}
-              open={open}
-              onClose={handleClose}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'right',
-              }}
-              transformOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-            >
-              <MenuItem onClick={handleClose}>Analyze</MenuItem>
-              <MenuItem onClick={handleClose}>Account Setting</MenuItem>
-              <MenuItem onClick={handleClose}>Privacy Setting</MenuItem>
-              <MenuItem onClick={handleClose}>Sign Out</MenuItem>
-            </Menu>
+            id="simple-menu"
+            anchorEl={anchorEl}
+            open={open}
+            onClose={handleClose}
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'right',
+            }}
+            transformOrigin={{
+              vertical: 'bottom',
+              horizontal: 'left',
+            }}
+          >
+            <MenuItem onClick={handleClose}>Analyze</MenuItem>
+            <MenuItem onClick={handleClose}>Account Setting</MenuItem>
+            <MenuItem onClick={handleClose}>Privacy Setting</MenuItem>
+            <MenuItem onClick={handleClose}>Sign Out</MenuItem>
+          </Menu>
         </Box>
         <Slider
           aria-label="time-indicator"
@@ -334,7 +334,7 @@ const MainPlayer = () => {
         <Card sx={{ gridArea: '9 / 2 / 12 / 7', }}>
           <CardContent>
             <Typography sx={{
-              color: '#3f3f3f',
+              color: '#203f6f',
               fontFamily: 'Roboto',
             }}>
               Details
@@ -371,13 +371,13 @@ const MainPlayer = () => {
         }}>
           <CardContent>
             <Typography sx={{
-              color: '#3f3f3f',
+              color: '#203f6f',
               fontFamily: 'Roboto',
             }}>
               Comments
             </Typography>
             <Typography sx={{
-              color: '#3f3f3f',
+              color: '#203f6f',
               fontFamily: 'Roboto',
             }}>
               Here in comments.Here in comments.Here in comments.Here in 

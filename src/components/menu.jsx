@@ -25,7 +25,7 @@ const menuButtons = [
 ]
 
 const menuStyle = {
-  color: '#3f3f3f',
+  color: '#203f6f',
   fontFamily: 'Roboto',
   textTransform: "none", 
   fontSize: "20px",
@@ -55,7 +55,7 @@ const MenuList = () => {
           <Typography variant='body1' sx={{
             fontSize: '25px',
             fontFamily: 'Roboto',
-            p: '20px'
+            p: '20px', 
           }}>
             MyuMyu
           </Typography>
@@ -65,7 +65,7 @@ const MenuList = () => {
         }}>
           <Link to='/home'>
             <Button variant="text" sx={{
-              color: '#3f3f3f',
+              color: '#203f6f',
               fontFamily: 'Roboto',
               textTransform: "none", 
               fontSize: "20px",
@@ -76,7 +76,7 @@ const MenuList = () => {
           </Link>
           <Link to='/explore'>
             <Button variant="text" sx={{
-              color: '#3f3f3f',
+              color: '#203f6f',
               textTransform: "none",
               pr:7.3,
               fontFamily: 'Roboto',
@@ -87,7 +87,7 @@ const MenuList = () => {
           </Link>
           <Link to='/library'>
             <Button variant="text" sx={{
-              color: '#3f3f3f', 
+              color: '#203f6f', 
               textTransform: "none", 
               pr: 7.8, 
               fontFamily: 'Roboto',
@@ -98,7 +98,7 @@ const MenuList = () => {
           </Link>
           <Link to='/notification'>
             <Button variant="text" sx={{
-              color: '#3f3f3f',
+              color: '#203f6f',
               textTransform: "none", 
               pr: 2, 
               fontFamily: 'Roboto',
@@ -108,7 +108,7 @@ const MenuList = () => {
             </Button>
           </Link>
             <Button variant="text" sx={{
-              color: '#3f3f3f', 
+              color: '#203f6f', 
               textTransform: "none", 
               pr: 2, 
               fontFamily: 'Roboto',
@@ -129,7 +129,7 @@ const MenuList = () => {
               variant="text"
               onClick={handleClick}
               sx={{
-                color: '#3f3f3f', 
+                color: '#203f6f', 
                 textTransform: "none", 
                 pr:6.5, 
                 fontFamily: 'Roboto',
@@ -158,7 +158,7 @@ const MenuList = () => {
             </Menu>
             <Link to='/account'>
               <Button variant="text" sx={{
-                color: '#3f3f3f', 
+                color: '#203f6f', 
                 textTransform: "none", 
                 pr:6.5, 
                 fontFamily: 'Roboto',

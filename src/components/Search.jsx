@@ -21,7 +21,7 @@ const Search = () => {
                 }}
             >
                 <InputBase
-                    sx={{ ml: 1, flex: 1 }}
+                    sx={{ ml: 1, flex: 1, color: 'rgba(32, 63, 111, 0.9)' }}
                     placeholder="Search Here"
                     inputProps={{ 'aria-label': 'search' }}
                 />

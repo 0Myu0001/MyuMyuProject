@@ -63,8 +63,8 @@ const Player = () => {
         </Paper>
       </Box>
       <Box sx={{gridArea: '2 / 5 / 3 / 9', display: 'flex', flexDirection: 'column',}}>
-        <Typography sx={{ml: '5%',fontFamily: 'Roboto', color: '#3f3f3f', fontSize: '20px', justifyContent: 'space-between'}}> {post ? post.post_title : 'Loading...'} </Typography>
-        <Typography sx={{ml: '5%',fontFamily: 'Roboto', color: '#3f3f3f', fontSize: '15px', justifyContent: 'space-between'}}> {post ? post.user_id : 'Loading...'} </Typography>
+        <Typography sx={{ml: '5%',fontFamily: 'Roboto', color: '#203f6f', fontSize: '20px', justifyContent: 'space-between'}}> {post ? post.post_title : 'Loading...'} </Typography>
+        <Typography sx={{ml: '5%',fontFamily: 'Roboto', color: '#203f6f', fontSize: '15px', justifyContent: 'space-between'}}> {post ? post.user_id : 'Loading...'} </Typography>
       </Box>
       <Box sx={{mt: 'auto',gridArea: '3 / 5 / 5 / 9' ,display: 'flex', flexDirection: 'column'}}>
         <Box sx={{mx: '10px', display: 'flex', justifyContent: 'space-evenly'}}>

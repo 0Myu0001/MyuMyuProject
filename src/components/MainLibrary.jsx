@@ -38,7 +38,7 @@ const StyledTab = styled((props) => <Tab disableRipple {...props} />)(
     marginRight: theme.spacing(1),
     color: 'rgba(63, 63, 63, 0.5)',
     '&.Mui-selected': {
-      color: '#3f3f3f',
+      color: '#203f6f',
     },
     '&.Mui-focusVisible': {
       backgroundColor: 'rgba(100, 95, 228, 0.32)',
@@ -154,7 +154,7 @@ const MainLibrary = () => {
           <MenuItem onClick={handleClose}>Artist</MenuItem>
           <MenuItem onClick={handleClose}>Singles</MenuItem>
         </Menu>
-        <Typography variant='h2' sx={{fontFamily: 'Roboto', position: 'absolute', zIndex: 1, }}>Library</Typography>
+        <Typography variant='h2' sx={{fontFamily: 'Roboto', position: 'absolute', zIndex: 1, color: '#203f6f'}}>Library</Typography>
         <Box sx={{display: 'flex', flexDirection: 'row', position: 'relative', justifyContent: 'center', }}>
           <StyledTabs
             value={value}
@@ -162,13 +162,13 @@ const MainLibrary = () => {
             aria-label="styled tabs example"
             sx ={{ }}
           >
-            <StyledTab label="Playlists" sx={{fontFamily: 'Roboto',}} />
-            <StyledTab label="Artists" sx={{fontFamily: 'Roboto',}} />
-            <StyledTab label="Singles" sx={{fontFamily: 'Roboto',}} />
+            <StyledTab label="Playlists" sx={{fontFamily: 'Roboto', color: 'rgba(32, 63, 111, 0.5)', }} />
+            <StyledTab label="Artists" sx={{fontFamily: 'Roboto', color: 'rgba(32, 63, 111, 0.5)', }} />
+            <StyledTab label="Singles" sx={{fontFamily: 'Roboto', color: 'rgba(32, 63, 111, 0.5)', }} />
           </StyledTabs>
         </Box>
         <Box sx={{display: 'flex', flexDirection: 'column',}}>
-          <Typography variant='h4' sx={{fontFamily: 'Roboto',}}>Playlists</Typography>
+          <Typography variant='h4' sx={{fontFamily: 'Roboto', color: '#203f6f', }}>Playlists</Typography>
           <Box sx={{display: 'flex', flexDirection: 'row', overflowX: 'auto', }} onClick={() => window.open('https://www.google.com')}>
             {playlist && (
               <Paper sx={{m: '40px', height: '180px', aspectRatio: ' 1 / 1 '}}>
@@ -186,7 +186,7 @@ const MainLibrary = () => {
           </Box>
         </Box>
         <Box sx={{display: 'flex', flexDirection: 'column',}}>
-          <Typography variant='h4' sx={{fontFamily: 'Roboto',}}>Artists</Typography>
+          <Typography variant='h4' sx={{fontFamily: 'Roboto', color: '#203f6f', }}>Artists</Typography>
           <Box sx={{display: 'flex', flexDirection: 'row', overflowX: 'auto', }}>
             <Paper sx={{m: '30px', height: '160px', aspectRatio: ' 1 / 1 ', borderRadius: '90px', cursor: 'pointer',}}>
             </Paper>
@@ -199,7 +199,7 @@ const MainLibrary = () => {
           </Box>
         </Box>
         <Box sx={{display: 'flex', flexDirection: 'column',}}>
-          <Typography variant='h4' sx={{fontFamily: 'Roboto',}}>Singles</Typography>
+          <Typography variant='h4' sx={{fontFamily: 'Roboto', color: '#203f6f', }}>Singles</Typography>
           <Box sx={{display: 'flex', flexDirection: 'row', overflowX: 'auto', }}>
             <Paper sx={{m: '30px', height: '160px', aspectRatio: ' 1 / 1 ', cursor: 'pointer',}}>
             </Paper>

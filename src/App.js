@@ -23,7 +23,7 @@ const App = () => {
         width: '100vw',
         backgroundColor: '#F2F8FF',
         fontFamily: 'Roboto',
-        color: '#3F3F3F',
+        color: '#203f6f',
         display: 'grid',
         gridTemplateColumns: 'repeat(6, 1fr)',
         gridTemplateRows: 'repeat(24, 1fr)',

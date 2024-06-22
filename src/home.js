@@ -22,7 +22,7 @@ const Home = () => {
         width: '100vw',
         backgroundColor: '#F2F8FF',
         fontFamily: 'Roboto',
-        color: '#3F3F3F',
+        color: '#203F6F', 
         display: 'grid',
         gridTemplateColumns: 'repeat(6, 1fr)',
         gridTemplateRows: 'repeat(24, 1fr)',
