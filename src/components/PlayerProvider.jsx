@@ -9,6 +9,8 @@ const PlayerProvider = ({ children }) => {
   const [isPause, setIsPause] = React.useState(false);
   const [isRepeat, setIsRepeat] = React.useState(0);
   const [isShuffle, setIsShuffle] = React.useState(false);
+  const [value, setValue] = React.useState(0);
+
   const handleClickPause = () => setIsPause(!isPause);
 
   const handleClickRepeat = () => {
@@ -23,17 +25,30 @@ const PlayerProvider = ({ children }) => {
 
   const handleClickShuffle = () => setIsShuffle(!isShuffle);
 
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
   const postId = '10000001'; 
 
   const audioRef = React.useRef(null);
 
   const [post, setPost] = React.useState(null);
+  const [user, setUser] = React.useState(null);
 
   React.useEffect(() => {
     fetch(`http://192.168.11.14:8000/api/post/${postId}/`)
       .then((res) => res.json())
-      .then(data => setPost(data))
+      .then(data => {setPost(data)})
   } ,[postId]);
+
+  React.useEffect(() => {
+    if (post && post.user_id) {
+      fetch(`http://192.168.11.14:8000/api/user/${post.user_id}`)
+        .then((res) => res.json())
+        .then(data => {setUser(data)})
+    }
+  }, [post]);
 
   React.useEffect(() => {
     if (post && audioRef.current) {
@@ -80,7 +95,7 @@ const PlayerProvider = ({ children }) => {
   };
 
   return (
-    <PlayerContext.Provider value={{post, position, setPosition, duration, setDuration, isFavorite, setIsFavorite, isPause, setIsPause, handleClickPause, postId, handlePositionChange, handlePositionChangeCommitted, draggingValue, handleClickRepeat, handleClickShuffle, isRepeat, isShuffle }}>
+    <PlayerContext.Provider value={{post, user, position, setPosition, duration, setDuration, isFavorite, setIsFavorite, isPause, setIsPause, handleClickPause, postId, handlePositionChange, handlePositionChangeCommitted, draggingValue, handleClickRepeat, handleClickShuffle, isRepeat, isShuffle, value, handleChange }}>
       {children}
     </PlayerContext.Provider>
   );

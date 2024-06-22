@@ -1,27 +1,30 @@
-import React, { useState, useEffect } from 'react';
+import * as React from 'react'; 
 
-const Fetch = () => {
+const FetchContent = React.createContext();
 
-  const [data, setData] = useState(null);
+const Fetch = ({children}) => {
 
-  useEffect(() => {
+  const [data, setData] = React.useState(null);
+
+  React.useEffect(() => {
     fetch('http://localhost:8000/api/')
       .then((res) => res.json())
       .then(data => setData(data));
   }, []);
 
   return (
-    <div>
-      {data ? (
-        <div>
-          <h1>{data.message}</h1>
-          <p>{data.time}</p>
-        </div>
-      ) : (
-        <p>Now Loading...</p>
-      )}
-    </div>
+    <FetchContent.Provider value={data}>
+      {children}
+    </FetchContent.Provider>
   );
+};
+
+const useFecch = () => {
+  const data = React.useContext(FetchContent);
+  if (data === undefined) {
+    throw new Error('useFetch must be used within a Fetch');
+  }
+  return data;
 };
 
 export default Fetch;
