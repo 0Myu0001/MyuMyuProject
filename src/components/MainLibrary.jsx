@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useNavigate } from 'react-router-dom';
 import useMediaQuery from '@mui/system/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import { styled } from '@mui/material/styles';
@@ -81,6 +82,7 @@ const a11yProps = (index) => {
 }
 
 const MainLibrary = () => {
+  const navigate = useNavigate(); 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -169,7 +171,7 @@ const MainLibrary = () => {
         </Box>
         <Box sx={{display: 'flex', flexDirection: 'column',}}>
           <Typography variant='h4' sx={{fontFamily: 'Roboto', color: '#203f6f', }}>Playlists</Typography>
-          <Box sx={{display: 'flex', flexDirection: 'row', overflowX: 'auto', }} onClick={() => window.open('https://www.google.com')}>
+          <Box sx={{display: 'flex', flexDirection: 'row', overflowX: 'auto', }} onClick={() => navigate('/playlist/10000001/')}>
             {playlist && (
               <Paper sx={{m: '40px', height: '180px', aspectRatio: ' 1 / 1 '}}>
                 <img src={playlist.playlist_image} alt='playlist1' style={{width: '100%', height: '100%', objectFit: 'cover', borderRadius: '5px',}} />

@@ -1,10 +1,11 @@
 import * as React from 'react'; 
+import { useParams } from 'react-router-dom';
 import { Box, Paper, Typography, IconButton, Menu, MenuItem } from '@mui/material';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 const Playlist = () => {
   const [playlist, setPlaylist] = React.useState(null);
-  const playlistId = '10000001';
+  const { playlistId } = useParams();
 
   React.useEffect(() => {
     fetch(`http://192.168.11.14:8000/api/playlist/${playlistId}/`)
@@ -19,7 +20,7 @@ const Playlist = () => {
   React.useEffect(() => {
     if (playlist && playlist.posts) {
       playlist.posts.map((post) => {
-        fetch(`http://127.0.0.1:8000/api/post/${post}/`)
+        fetch(`http://192.168.11.14:8000/api/post/${post}/`)
           .then((res) => res.json())
           .then(data => {setPostDetails([...postDetails, data])})
       })
