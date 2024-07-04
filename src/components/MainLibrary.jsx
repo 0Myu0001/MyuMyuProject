@@ -169,50 +169,74 @@ const MainLibrary = () => {
             <StyledTab label="Singles" sx={{fontFamily: 'Roboto', color: 'rgba(32, 63, 111, 0.5)', }} />
           </StyledTabs>
         </Box>
-        <Box sx={{display: 'flex', flexDirection: 'column',}}>
-          <Typography variant='h4' sx={{fontFamily: 'Roboto', color: '#203f6f', }}>Playlists</Typography>
-          <Box sx={{display: 'flex', flexDirection: 'row', overflowX: 'auto', }} onClick={() => navigate('/playlist/10000001/')}>
-            {playlist && (
-              <Paper sx={{m: '40px', height: '180px', aspectRatio: ' 1 / 1 '}}>
-                <img src={playlist.playlist_image} alt='playlist1' style={{width: '100%', height: '100%', objectFit: 'cover', borderRadius: '5px',}} />
+        {value === 0 && (
+          <Box sx={{display: 'flex', flexDirection: 'column',}}>
+            <Typography variant='h4' sx={{fontFamily: 'Roboto', color: '#203f6f', }}>Playlists</Typography>
+            <Box sx={{
+              display: 'flex', 
+              flexDirection: 'row',
+              justifyContent: 'space-evenly', 
+              flexWrap: 'wrap', 
+              overflowY: 'auto',
+            }}>
+              {playlist && (
+                <Paper sx={{m: '40px', height: '180px', aspectRatio: ' 1 / 1 '}} onClick={() => navigate('/playlist/10000001/')}>
+                  <img src={playlist.playlist_image} alt='playlist1' style={{width: '100%', height: '100%', objectFit: 'cover', borderRadius: '5px',}} />
+                </Paper>
+              )}
+              <Paper sx={{m: '40px', height: '180px', aspectRatio: ' 1 / 1 ', cursor: 'pointer',}}>
               </Paper>
-            )}
-            <Paper sx={{m: '40px', height: '180px', aspectRatio: ' 1 / 1 ', cursor: 'pointer',}}>
-            </Paper>
-            <Paper sx={{m: '40px', height: '180px', aspectRatio: ' 1 / 1 ', cursor: 'pointer',}}>
-            </Paper>
-            <Paper sx={{m: '40px', height: '180px', aspectRatio: ' 1 / 1 ', cursor: 'pointer',}}>
-            </Paper>
-            <Paper sx={{m: '40px', height: '180px', aspectRatio: ' 1 / 1 ', cursor: 'pointer',}}>
-            </Paper>
+              <Paper sx={{m: '40px', height: '180px', aspectRatio: ' 1 / 1 ', cursor: 'pointer',}}>
+              </Paper>
+              <Paper sx={{m: '40px', height: '180px', aspectRatio: ' 1 / 1 ', cursor: 'pointer',}}>
+              </Paper>
+              <Paper sx={{m: '40px', height: '180px', aspectRatio: ' 1 / 1 ', cursor: 'pointer',}}>
+              </Paper>
+            </Box>
           </Box>
-        </Box>
-        <Box sx={{display: 'flex', flexDirection: 'column',}}>
-          <Typography variant='h4' sx={{fontFamily: 'Roboto', color: '#203f6f', }}>Artists</Typography>
-          <Box sx={{display: 'flex', flexDirection: 'row', overflowX: 'auto', }}>
-            <Paper sx={{m: '30px', height: '160px', aspectRatio: ' 1 / 1 ', borderRadius: '90px', cursor: 'pointer',}}>
-            </Paper>
-            <Paper sx={{m: '30px', height: '160px', aspectRatio: ' 1 / 1 ', borderRadius: '90px', cursor: 'pointer',}}>
-            </Paper>
-            <Paper sx={{m: '30px', height: '160px', aspectRatio: ' 1 / 1 ', borderRadius: '90px', cursor: 'pointer',}}>
-            </Paper>
-            <Paper sx={{m: '30px', height: '160px', aspectRatio: ' 1 / 1 ', borderRadius: '90px', cursor: 'pointer',}}>
-            </Paper>
+        )}
+        {value === 1 && (
+          <Box sx={{display: 'flex', flexDirection: 'column',}}>
+            <Typography variant='h4' sx={{fontFamily: 'Roboto', color: '#203f6f', }}>Artists</Typography>
+            <Box sx={{
+              display: 'flex', 
+              flexDirection: 'row',
+              justifyContent: 'space-evenly', 
+              flexWrap: 'wrap', 
+              overflowY: 'auto',
+            }}>
+              <Paper sx={{m: '30px', height: '160px', aspectRatio: ' 1 / 1 ', borderRadius: '90px', cursor: 'pointer',}}>
+              </Paper>
+              <Paper sx={{m: '30px', height: '160px', aspectRatio: ' 1 / 1 ', borderRadius: '90px', cursor: 'pointer',}}>
+              </Paper>
+              <Paper sx={{m: '30px', height: '160px', aspectRatio: ' 1 / 1 ', borderRadius: '90px', cursor: 'pointer',}}>
+              </Paper>
+              <Paper sx={{m: '30px', height: '160px', aspectRatio: ' 1 / 1 ', borderRadius: '90px', cursor: 'pointer',}}>
+              </Paper>
+            </Box>
           </Box>
-        </Box>
-        <Box sx={{display: 'flex', flexDirection: 'column',}}>
-          <Typography variant='h4' sx={{fontFamily: 'Roboto', color: '#203f6f', }}>Singles</Typography>
-          <Box sx={{display: 'flex', flexDirection: 'row', overflowX: 'auto', }}>
-            <Paper sx={{m: '30px', height: '160px', aspectRatio: ' 1 / 1 ', cursor: 'pointer',}}>
-            </Paper>
-            <Paper sx={{m: '30px', height: '160px', aspectRatio: ' 1 / 1 ', cursor: 'pointer',}}>
-            </Paper>
-            <Paper sx={{m: '30px', height: '160px', aspectRatio: ' 1 / 1 ', cursor: 'pointer',}}>
-            </Paper>
-            <Paper sx={{m: '30px', height: '160px', aspectRatio: ' 1 / 1 ', cursor: 'pointer',}}>
-            </Paper>
+        )}
+        {value === 2 && (
+          <Box sx={{display: 'flex', flexDirection: 'column',}}>
+            <Typography variant='h4' sx={{fontFamily: 'Roboto', color: '#203f6f', }}>Singles</Typography>
+            <Box sx={{
+              display: 'flex', 
+              flexDirection: 'row',
+              justifyContent: 'space-evenly', 
+              flexWrap: 'wrap', 
+              overflowY: 'auto',
+            }}>
+              <Paper sx={{m: '30px', height: '160px', aspectRatio: ' 1 / 1 ', cursor: 'pointer',}}>
+              </Paper>
+              <Paper sx={{m: '30px', height: '160px', aspectRatio: ' 1 / 1 ', cursor: 'pointer',}}>
+              </Paper>
+              <Paper sx={{m: '30px', height: '160px', aspectRatio: ' 1 / 1 ', cursor: 'pointer',}}>
+              </Paper>
+              <Paper sx={{m: '30px', height: '160px', aspectRatio: ' 1 / 1 ', cursor: 'pointer',}}>
+              </Paper>
+            </Box>
           </Box>
-        </Box>
+        )}
       </Box>
     </Paper>
   );
