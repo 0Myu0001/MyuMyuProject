@@ -29,7 +29,7 @@ const PlayerProvider = ({ children }) => {
     setValue(newValue);
   };
 
-  const postId = '10000001'; 
+  const postId = "*00000000*"; 
 
   const audioRef = React.useRef(null);
 
@@ -37,14 +37,14 @@ const PlayerProvider = ({ children }) => {
   const [user, setUser] = React.useState(null);
 
   React.useEffect(() => {
-    fetch(`http://192.168.11.14:8000/api/post/${postId}/`)
+    fetch(`http://127.0.0.1:8000/api/post/${postId}/`)
       .then((res) => res.json())
       .then(data => {setPost(data)})
   } ,[postId]);
 
   React.useEffect(() => {
     if (post && post.user_id) {
-      fetch(`http://192.168.11.14:8000/api/user/${post.user_id}`)
+      fetch(`http://127.0.0.1:8000/api/user/${post.user_id}`)
         .then((res) => res.json())
         .then(data => {setUser(data)})
     }
@@ -79,6 +79,26 @@ const PlayerProvider = ({ children }) => {
       isPause ? audioRef.current.play() : audioRef.current.pause();
     }
   }, [isPause]);
+
+  React.useEffect(() => {
+    if (audioRef.current) {
+      const handleSongEnd = () => {
+        if (isRepeat === 0) {
+          setIsPause(true);
+        } else if (isRepeat === 1) {
+          audioRef.current.currentTime = 0;
+          audioRef.current.play();
+        } else if (isRepeat === 2) {
+          audioRef.current.currentTime = 0;
+          audioRef.current.play();
+        }
+      }
+      audioRef.current.addEventListener('ended', handleSongEnd);
+      return () => {
+        audioRef.current.removeEventListener('ended', handleSongEnd);
+      }
+    }
+  }, [audioRef.current])
 
   const [draggingValue, setDraggingValue] = React.useState(null);
 

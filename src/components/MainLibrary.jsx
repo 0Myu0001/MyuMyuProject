@@ -106,7 +106,7 @@ const MainLibrary = () => {
   };
 
   React.useEffect(() => {
-    fetch(`http://192.168.11.14:8000/api/playlist/${playlistId}/`)
+    fetch(`http://127.0.0.1:8000/api/playlist/${playlistId}/`)
       .then((res) => res.json())
       .then(data => {setPlaylist(data)})
   } ,[playlistId]);
@@ -175,22 +175,23 @@ const MainLibrary = () => {
             <Box sx={{
               display: 'flex', 
               flexDirection: 'row',
-              justifyContent: 'space-evenly', 
+              justifyContent: 'flex-start', 
               flexWrap: 'wrap', 
               overflowY: 'auto',
+              gap: '40px', 
             }}>
               {playlist && (
-                <Paper sx={{m: '40px', height: '180px', aspectRatio: ' 1 / 1 '}} onClick={() => navigate('/playlist/10000001/')}>
+                <Paper sx={{m: '20px', height: '180px', aspectRatio: ' 1 / 1 '}} onClick={() => navigate('/playlist/10000001/')}>
                   <img src={playlist.playlist_image} alt='playlist1' style={{width: '100%', height: '100%', objectFit: 'cover', borderRadius: '5px',}} />
                 </Paper>
               )}
-              <Paper sx={{m: '40px', height: '180px', aspectRatio: ' 1 / 1 ', cursor: 'pointer',}}>
+              <Paper sx={{m: '20px', height: '180px', aspectRatio: ' 1 / 1 ', cursor: 'pointer',}}>
               </Paper>
-              <Paper sx={{m: '40px', height: '180px', aspectRatio: ' 1 / 1 ', cursor: 'pointer',}}>
+              <Paper sx={{m: '20px', height: '180px', aspectRatio: ' 1 / 1 ', cursor: 'pointer',}}>
               </Paper>
-              <Paper sx={{m: '40px', height: '180px', aspectRatio: ' 1 / 1 ', cursor: 'pointer',}}>
+              <Paper sx={{m: '20px', height: '180px', aspectRatio: ' 1 / 1 ', cursor: 'pointer',}}>
               </Paper>
-              <Paper sx={{m: '40px', height: '180px', aspectRatio: ' 1 / 1 ', cursor: 'pointer',}}>
+              <Paper sx={{m: '20px', height: '180px', aspectRatio: ' 1 / 1 ', cursor: 'pointer',}}>
               </Paper>
             </Box>
           </Box>
