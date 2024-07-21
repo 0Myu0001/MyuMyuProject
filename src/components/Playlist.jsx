@@ -8,7 +8,7 @@ const Playlist = () => {
   const { playlistId } = useParams();
 
   React.useEffect(() => {
-    fetch(`http://192.168.11.14:8000/api/playlist/${playlistId}/`)
+    fetch(`http://127.0.0.1:8000/api/playlist/${playlistId}/`)
       .then((res) => res.json())
       .then(data => {setPlaylist(data)})
   } ,[playlistId]);
@@ -20,7 +20,7 @@ const Playlist = () => {
   React.useEffect(() => {
     if (playlist && playlist.posts) {
       playlist.posts.map((post) => {
-        fetch(`http://192.168.11.14:8000/api/post/${post}/`)
+        fetch(`http://127.0.0.1:8000/api/post/${post}/`)
           .then((res) => res.json())
           .then(data => {setPostDetails([...postDetails, data])})
       })

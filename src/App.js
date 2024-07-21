@@ -6,6 +6,7 @@ import MainPlayer from './components/MainPlayer.jsx';
 import MainExplorer from './components/MainExplorer.jsx';
 import MainLibrary from './components/MainLibrary.jsx';
 import Playlist from './components/Playlist.jsx';
+import Create from './components/Create.jsx';
 import NotificationWindow from './components/NotificationWindow.jsx';
 import AccountPanel from './components/AccountPanel.jsx';
 import Search from './components/Search.jsx';
@@ -35,7 +36,8 @@ const App = () => {
           <Route path='/library' element={<MainLibrary />} />
           <Route path='/notification' element={<NotificationWindow />} />
           <Route path='/account' element={<AccountPanel/>} />
-          <Route path='/playlist/*' element={<Playlist />} />
+          <Route path='/create' element={<Create />} />
+          <Route path='/playlist/:playlistId' element={<Playlist />} />
         </Routes>
         <Search />
         <Player />

@@ -29,7 +29,7 @@ const PlayerProvider = ({ children }) => {
     setValue(newValue);
   };
 
-  const postId = "*00000000*"; 
+  const postId = "1"; 
 
   const audioRef = React.useRef(null);
 
@@ -37,7 +37,7 @@ const PlayerProvider = ({ children }) => {
   const [user, setUser] = React.useState(null);
 
   React.useEffect(() => {
-    fetch(`http://127.0.0.1:8000/api/post/${postId}/`)
+    fetch(`http://127.0.0.1:8000/api/music/${postId}/`)
       .then((res) => res.json())
       .then(data => {setPost(data)})
   } ,[postId]);

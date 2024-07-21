@@ -116,13 +116,15 @@ const MenuList = () => {
             }}> 
               <PeopleAltRoundedIcon/><span style={{ marginLeft: "8px" }}>Community</span>
             </Button>
-            <Button variant="contained" sx={{
-              px: 7.3,
-              background: "linear-gradient(45deg, #fff, #00f)",
-              fontFamily: 'Roboto',
-              fontSize: "15px"
-            }}>Create
-            </Button>
+            <Link to='/create'>
+              <Button variant="contained" sx={{
+                px: 7.3,
+                background: "linear-gradient(45deg, #fff, #00f)",
+                fontFamily: 'Roboto',
+                fontSize: "15px"
+              }}>Create
+              </Button>
+            </Link>
           </Box>
           <Box>
             <Button 
