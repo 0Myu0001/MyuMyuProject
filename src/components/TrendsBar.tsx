@@ -3,6 +3,7 @@ import Typography from '@mui/material/Typography';
 
 const TrendsBar = () => {
     return(
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Typography variant="body1" sx={{
             fontSize: '1.6vw',
             height: 'auto',

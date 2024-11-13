@@ -1,5 +1,7 @@
 import * as React from 'react';
+// @ts-expect-error TS(6142): Module './PlayerProvider' was resolved to '/Users/... Remove this comment to see the full error message
 import { usePlayer } from './PlayerProvider';
+// @ts-expect-error TS(6142): Module './BreakPoint' was resolved to '/Users/kei/... Remove this comment to see the full error message
 import { useBreakPoints } from './BreakPoint';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
@@ -30,8 +32,10 @@ import { Button, CardActions, CardContent } from '@mui/material';
 
 
 const StyledTabs = styled((props) => (
+  // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
   <Tabs
     {...props}
+    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     TabIndicatorProps={{ children: <span className="MuiTabs-indicatorSpan" /> }}
   />
 ))({
@@ -47,6 +51,7 @@ const StyledTabs = styled((props) => (
   },
 });
 
+// @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
 const StyledTab = styled((props) => <Tab disableRipple {...props} />)(
   ({ theme }) => ({
     textTransform: 'none',
@@ -64,10 +69,11 @@ const StyledTab = styled((props) => <Tab disableRipple {...props} />)(
 );
 
 
-const CustomTabPanel = (props) => {
+const CustomTabPanel = (props: any) => {
   const { children, value, index, ...other } = props;
 
   return (
+    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <div
       role="tabpanel"
       hidden={value !== index}
@@ -76,7 +82,9 @@ const CustomTabPanel = (props) => {
       {...other}
     >
       {value === index && (
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Box sx={{ p: 3 }}>
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Typography>{children}</Typography>
         </Box>
       )}
@@ -90,14 +98,14 @@ CustomTabPanel.propTypes = {
   value: PropTypes.number.isRequired,
 };
 
-const a11yProps = (index) => {
+const a11yProps = (index: any) => {
   return {
     id: `simple-tab-${index}`,
     'aria-controls': `simple-tabpanel-${index}`,
   };
 }
 
-const formatDuration = (value) => {
+const formatDuration = (value: any) => {
   const minute = Math.floor(value / 60);
   const secondLeft = value - minute * 60;
   return `${minute}:${secondLeft < 10 ? `0${secondLeft}` : secondLeft}`;
@@ -125,6 +133,7 @@ const modalStyle = {
 
 
 const MainPlayer = () => {
+  // @ts-expect-error TS(2339): Property 'post' does not exist on type 'unknown'.
   const {post, user, position, duration, isFavorite, setIsFavorite, isPause, handleClickPause,  handlePositionChange, handlePositionChangeCommitted, draggingValue, handleClickRepeat, handleClickShuffle, isRepeat, isShuffle, value, handleChange} = usePlayer();
 
   const [isHovered, setIsHovered] = React.useState(false);
@@ -135,7 +144,7 @@ const MainPlayer = () => {
   const { mdMatches, smMatches } = useBreakPoints();
 
   const open = Boolean(anchorEl); 
-  const handleClick = (event) => {
+  const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
@@ -149,10 +158,12 @@ const MainPlayer = () => {
   const handleClickFavorite = () => setIsFavorite(!isFavorite);
 
   return(
+    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Paper 
       sx = {{m: '5px', gridArea: '2 / 2 / 25 / 5', backgroundColor: 'rgba(255, 255, 255, 0.1)', borderRadius: '15px',}}
       elevation = {6}
     >
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Box sx = {{
         width: '100%',
         height: '100%',
@@ -160,15 +171,19 @@ const MainPlayer = () => {
         gridTemplateColumns: 'repeat(12, 1fr)',
         gridTemplateRows: 'repeat(12, 1fr)',
       }}>
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <StyledTabs
           value={value}
           onChange={handleChange}
           aria-label="styled tabs example"
           sx ={{gridArea: '1 / 1 / 2 / 13', m: 'auto',}}
         >
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <StyledTab label="Recommend" sx={{fontFamily: 'Roboto', color: 'rgba(32, 63, 111, 0.5)'}} />
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <StyledTab label="Playlist" sx={{fontFamily: 'Roboto', color: 'rgba(32, 63, 111, 0.5)'}} />
         </StyledTabs>
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Box sx={{
           gridArea: '2 / 4 / 7 / 10',
           display: 'flex',
@@ -178,6 +193,7 @@ const MainPlayer = () => {
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         >
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Paper elevation='6' sx={{
             maxWidth: '100%',
             maxHeight: '100%',
@@ -189,43 +205,61 @@ const MainPlayer = () => {
           }}
           onClick={handleClickPause}
           >
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             {post && <img src={post.post_image} alt="Post Image" style={{width: '100%', height: '100%', objectFit: 'cover', borderRadius: '10px',}} />}
             
           </Paper>
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           {isHovered && (isPause ? <PauseRoundedIcon fontSize="large" sx={{position: 'absolute', color: '#FFFFFF',}} /> : <PlayArrowRoundedIcon fontSize='large' sx={{position: 'absolute', color: '#FFFFFF',}} />)}
         </Box>
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <IconButton aria-label="return" size="large" sx={{
           gridArea: '4 / 2 / 5 / 3',
         }}>
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <KeyboardDoubleArrowLeftRoundedIcon fontSize="inherit" />
         </IconButton>
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <IconButton aria-label="skip" size="large" sx={{
         gridArea: '4 / 11 / 5 / 12',
         }}>
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <KeyboardDoubleArrowRightRoundedIcon fontSize="inherit" />
         </IconButton>
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Box sx={{my: '20px',gridArea: '5 / 11 / 7 / 12', display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly'}}>
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <IconButton aria-label="repeat" size="medium" onClick={handleClickRepeat} sx={{ m: 'auto' }}>
             {
               isRepeat === 0 ? (
+                // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                 <RepeatRoundedIcon fontSize="inherit" />
               ) : isRepeat === 1 ? (
+                // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                 <RepeatRoundedIcon fontSize="inherit" color="primary" />
                 
               ) : (
+                // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                 <RepeatOneRoundedIcon fontSize="inherit" color="primary" />
               )
             }
           </IconButton>
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <IconButton aria-label="shuffle" size="medium" onClick={handleClickShuffle} sx={{ m: 'auto' }}>
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             {isShuffle ? <ShuffleRoundedIcon fontSize="inherit" color="primary" /> : <ShuffleRoundedIcon fontSize="inherit" />}
           </IconButton>
         </Box>
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Box sx={{gridArea: '7 / 2 / 8 / 3 '}}>
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           {post && (user ? <img src={user.user_image} alt='user image' style={{height: '100%', width: '100%', borderRadius: '50%'}}/> : null)}
         </Box>
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Box sx={{gridArea: '7 / 3 / 8 / 9', display: 'flex'}}>
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Box sx={{display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly'}}>
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Typography variant="body1" sx={{
               color: '#203f6f', 
               fontSize: '25px',
@@ -233,6 +267,7 @@ const MainPlayer = () => {
             }}>
               {post ? post.post_title : 'Loading...'}
             </Typography>
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Typography variant="body1" sx={{
               color: '#203f6f', 
               fontSize: '20px',
@@ -241,7 +276,9 @@ const MainPlayer = () => {
               {post ? post.user_id : 'Loading...'}
             </Typography>
           </Box>
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Box sx={{display: 'flex'}}>
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Button variant='contained' sx={{ 
               ml: '20px',
               mt: 'auto',
@@ -252,20 +289,30 @@ const MainPlayer = () => {
             </Button>
           </Box>
         </Box>
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Box sx={{ gridArea: '7 / 9 / 8 / 12', display: 'flex', mt: 'auto', }}>
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <IconButton aria-label="love" size="medium" onClick={ handleClickFavorite } sx={{ m: 'auto' }}>
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             {isFavorite ? <FavoriteRoundedIcon fontSize="inherit" /> : <FavoriteBorderRoundedIcon fontSize="inherit" />}
           </IconButton>
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <IconButton area-label="addLibrary" size="medium" sx={{ m: 'auto' }}>
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <AddCircleOutlineRoundedIcon fontSize="inherit"/>
           </IconButton>
+          // @ts-expect-error TS(2769): No overload matches this call.
           <IconButton area-label="share" fontSize="medium" sx={{ m: 'auto' }}>
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <IosShareIcon />
           </IconButton>
           {/* 必要かわからない */}
+          // @ts-expect-error TS(2769): No overload matches this call.
           <IconButton area-label="more" fontSize="medium" onClick={handleClick} sx={{ m: 'auto' }}>
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <MoreVertRoundedIcon />
           </IconButton>
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Menu
             id="simple-menu"
             anchorEl={anchorEl}
@@ -280,12 +327,17 @@ const MainPlayer = () => {
               horizontal: 'left',
             }}
           >
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <MenuItem onClick={handleClose}>Analyze</MenuItem>
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <MenuItem onClick={handleClose}>Account Setting</MenuItem>
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <MenuItem onClick={handleClose}>Privacy Setting</MenuItem>
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <MenuItem onClick={handleClose}>Sign Out</MenuItem>
           </Menu>
         </Box>
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Slider
           aria-label="time-indicator"
           size="small"
@@ -319,6 +371,7 @@ const MainPlayer = () => {
             },
           }}
         />
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Box
           sx={{
             gridArea: '8 / 2 / 9 / 12',
@@ -328,11 +381,16 @@ const MainPlayer = () => {
             mt: -2,
           }}
         >
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <TinyText>{formatDuration(Math.floor(position))}</TinyText>
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <TinyText>-{formatDuration(Math.floor(duration - position))}</TinyText>
         </Box>
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Card sx={{ gridArea: '9 / 2 / 12 / 7', }}>
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <CardContent>
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Typography sx={{
               color: '#203f6f',
               fontFamily: 'Roboto',
@@ -340,7 +398,9 @@ const MainPlayer = () => {
               Details
             </Typography>
           </CardContent>
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <CardActions>
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Button 
               onClick={handleOpenDetails}
               sx={{
@@ -349,16 +409,20 @@ const MainPlayer = () => {
                 textTransform: "none",
               }}>Read More
             </Button>
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Modal 
               open={openDetails}
               onClose={handleCloseDetails}
               aria-labelledby="modal-modal-title"
               aria-describedby="modal-modal-description"
             >
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Box sx={modalStyle}>
+                // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                 <Typography id="modal-modal-title" variant="h6" component="h2">
                   Details
                 </Typography>
+                // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                 <Typography id="modal-modal-description" sx={{ mt: 2 }}>
                   Here in details.
                 </Typography>
@@ -366,16 +430,20 @@ const MainPlayer = () => {
             </Modal>
           </CardActions>
         </Card>
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Card sx={{
           gridArea: '9 / 7 / 12 / 12',
         }}>
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <CardContent>
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Typography sx={{
               color: '#203f6f',
               fontFamily: 'Roboto',
             }}>
               Comments
             </Typography>
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Typography sx={{
               color: '#203f6f',
               fontFamily: 'Roboto',
@@ -383,7 +451,9 @@ const MainPlayer = () => {
               Here in comments.Here in comments.Here in comments.Here in 
             </Typography>
           </CardContent>
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <CardActions>
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Button 
               onClick={handleOpenComments}
               sx={{
@@ -393,16 +463,20 @@ const MainPlayer = () => {
               }}
             >Read More
             </Button>
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Modal 
               open={openComments}
               onClose={handleCloseComments}
               aria-labelledby="modal-comments-title"
               aria-describedby="modal-comments-description"
             >
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Box sx={modalStyle}>
+                // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                 <Typography id="modal-comments-title" variant="h6" component="h2">
                   Comments
                 </Typography>
+                // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                 <Typography id="modal-comments-description" sx={{ mt: 2 }}>
                   Here in comments.Here in comments.Here in comments.Here in comments.Here in comments.Here in comments.Here in comments.
                 </Typography>

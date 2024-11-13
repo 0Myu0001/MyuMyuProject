@@ -12,8 +12,10 @@ import Typography from '@mui/material/Typography';
 import { TabsProps } from '@mui/material/Tabs';
 
 const StyledTabs = styled((props: TabsProps) => (
+  // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
   <Tabs
     {...props}
+    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     TabIndicatorProps={{ children: <span className="MuiTabs-indicatorSpan" /> }}
   />
 ))({
@@ -29,6 +31,7 @@ const StyledTabs = styled((props: TabsProps) => (
   },
 });
 
+// @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
 const StyledTab = styled((props: TabProps) => <Tab disableRipple {...props} />)(
   ({ theme }) => ({
     textTransform: 'none',
@@ -56,6 +59,7 @@ const CustomTabPanel: React.FC<CustomTabPanelProps> = (props) => {
   const { children, value, index, ...other } = props;
 
   return (
+    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <div
       role="tabpanel"
       hidden={value !== index}
@@ -64,7 +68,9 @@ const CustomTabPanel: React.FC<CustomTabPanelProps> = (props) => {
       {...other}
     >
       {value === index && (
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Box sx={{ p: 3 }}>
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Typography>{children}</Typography>
         </Box>
       )}
@@ -118,14 +124,17 @@ const MainExplorer = () => {
       scrollContainer.addEventListener('scroll', handleScroll);
     }
 
+    // @ts-expect-error TS(2531): Object is possibly 'null'.
     return () => scrollContainer.removeEventListener('scroll', handleScroll); 
   }, []); 
 
   return(
+    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Paper 
       sx = {{m: '5px', gridArea: '2 / 2 / 25 / 5', backgroundColor: 'rgba(255, 255, 255, 0.1)', borderRadius: '15px',}}
       elevation = {6}
     >
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Box sx={{
         height: '100%',
         width: '100%',
@@ -134,47 +143,65 @@ const MainExplorer = () => {
         overflow: 'hidden', 
       }}
       >
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Typography variant='h2' sx={{fontFamily: 'Roboto', color: '#203f6f', }}>Explore</Typography>
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Box sx={{
           display: 'flex',
           flexDirection: 'column',
           transform: hideSuggest ? 'translateY(-125%)' : 'translateY(0)', 
           transition: 'transform 0.5s ease-in-out', 
         }}>
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Typography variant='h4' sx={{fontFamily: 'Roboto', color: '#203f6f', }}>Suggest</Typography>
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Box sx={{ display: 'flex', flexDirection: 'row', overflowX: 'auto'}}>
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Paper sx={{m: '40px', height: '180px', aspectRatio: ' 4 / 3 ', cursor: 'pointer'}} onClick={() => window.open('https://www.google.com')}>
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <img src="./suggest1.jpeg" alt='suggest1' style={{width: '100%', height: '100%', objectFit: 'cover', borderRadius: '10px',}} />
             </Paper>
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Paper sx={{m: '40px', height: '180px', aspectRatio: ' 4 / 3 ', cursor: 'pointer'}} onClick={() => window.open('https://www.google.com')}>
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <img src="./suggest2.jpeg" alt='suggest2' style={{width: '100%', height: '100%', objectFit: 'cover', borderRadius: '10px',}} />
             </Paper>
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Paper sx={{m: '40px', height: '180px', aspectRatio: ' 4 / 3 ', cursor: 'pointer',}}>
             </Paper>
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Paper sx={{m: '40px', height: '180px', aspectRatio: ' 4 / 3 ', cursor: 'pointer',}}>
             </Paper>
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Paper sx={{m: '40px', height: '180px', aspectRatio: ' 4 / 3 ', cursor: 'pointer',}}>
             </Paper>
           </Box>
         </Box>
         
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <StyledTabs
           value={value}
           onChange={handleChange}
           aria-label="styled tabs example"
           sx ={{mx: 'auto'}}
         >
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <StyledTab label="Playlists" sx={{fontFamily: 'Roboto', color: 'rgba(32, 63, 111, 0.5)', }} />
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <StyledTab label="Artists" sx={{fontFamily: 'Roboto', color: 'rgba(32, 63, 111, 0.5)', }} />
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <StyledTab label="Singles" sx={{fontFamily: 'Roboto', color: 'rgba(32, 63, 111, 0.5)', }} />
         </StyledTabs>
         {value === 0 && (
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Box sx={{
             display: 'flex', 
             flexDirection: 'column',
             overflowY: 'auto',
           }}>
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Typography variant='h4' sx={{fontFamily: 'Roboto', color: '#203f6f', }}>Playlists</Typography>
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Box sx={{
               display: 'flex', 
               flexDirection: 'row',
@@ -183,40 +210,55 @@ const MainExplorer = () => {
               overflowY: 'auto',
             }}
             ref={scrollContainerRef}>
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Paper sx={{m: '20px', width: '150px', aspectRatio: ' 1 / 1 ', cursor: 'pointer',}}>
               </Paper>
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Paper sx={{m: '20px', width: '150px', aspectRatio: ' 1 / 1 ', cursor: 'pointer',}}>
               </Paper>
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Paper sx={{m: '20px', width: '150px', aspectRatio: ' 1 / 1 ', cursor: 'pointer',}}>
               </Paper>
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Paper sx={{m: '20px', width: '150px', aspectRatio: ' 1 / 1 ', cursor: 'pointer',}}>
               </Paper>
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Paper sx={{m: '20px', width: '150px', aspectRatio: ' 1 / 1 ', cursor: 'pointer',}}>
               </Paper>
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Paper sx={{m: '20px', width: '150px', aspectRatio: ' 1 / 1 ', cursor: 'pointer',}}>
               </Paper>
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Paper sx={{m: '20px', width: '150px', aspectRatio: ' 1 / 1 ', cursor: 'pointer',}}>
               </Paper>
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Paper sx={{m: '20px', width: '150px', aspectRatio: ' 1 / 1 ', cursor: 'pointer',}}>
               </Paper>
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Paper sx={{m: '20px', width: '150px', aspectRatio: ' 1 / 1 ', cursor: 'pointer',}}>
               </Paper>
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Paper sx={{m: '20px', width: '150px', aspectRatio: ' 1 / 1 ', cursor: 'pointer',}}>
               </Paper>
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Paper sx={{m: '20px', width: '150px', aspectRatio: ' 1 / 1 ', cursor: 'pointer',}}>
               </Paper>
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Paper sx={{m: '20px', width: '150px', aspectRatio: ' 1 / 1 ', cursor: 'pointer',}}>
               </Paper>
             </Box>
           </Box>
         )}
         {value === 1 && (
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Box sx={{
             display: 'flex', 
             flexDirection: 'column',
             overflowY: 'auto',
           }}>
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Typography variant='h4' sx={{fontFamily: 'Roboto', color: '#203f6f', }}>Artists</Typography>
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Box sx={{
               display: 'flex', 
               flexDirection: 'row',
@@ -225,40 +267,55 @@ const MainExplorer = () => {
               overflowY: 'auto',
             }}
             ref={scrollContainerRef}>
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Paper sx={{m: '20px', width: '150px', aspectRatio: ' 1 / 1 ', cursor: 'pointer', borderRadius: '50%', }}>
               </Paper>
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Paper sx={{m: '20px', width: '150px', aspectRatio: ' 1 / 1 ', cursor: 'pointer', borderRadius: '50%', }}>
               </Paper>
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Paper sx={{m: '20px', width: '150px', aspectRatio: ' 1 / 1 ', cursor: 'pointer', borderRadius: '50%', }}>
               </Paper>
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Paper sx={{m: '20px', width: '150px', aspectRatio: ' 1 / 1 ', cursor: 'pointer', borderRadius: '50%', }}>
               </Paper>
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Paper sx={{m: '20px', width: '150px', aspectRatio: ' 1 / 1 ', cursor: 'pointer', borderRadius: '50%', }}>
               </Paper>
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Paper sx={{m: '20px', width: '150px', aspectRatio: ' 1 / 1 ', cursor: 'pointer', borderRadius: '50%', }}>
               </Paper>
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Paper sx={{m: '20px', width: '150px', aspectRatio: ' 1 / 1 ', cursor: 'pointer', borderRadius: '50%', }}>
               </Paper>
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Paper sx={{m: '20px', width: '150px', aspectRatio: ' 1 / 1 ', cursor: 'pointer', borderRadius: '50%', }}>
               </Paper>
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Paper sx={{m: '20px', width: '150px', aspectRatio: ' 1 / 1 ', cursor: 'pointer', borderRadius: '50%', }}>
               </Paper>
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Paper sx={{m: '20px', width: '150px', aspectRatio: ' 1 / 1 ', cursor: 'pointer', borderRadius: '50%', }}>
               </Paper>
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Paper sx={{m: '20px', width: '150px', aspectRatio: ' 1 / 1 ', cursor: 'pointer', borderRadius: '50%', }}>
               </Paper>
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Paper sx={{m: '20px', width: '150px', aspectRatio: ' 1 / 1 ', cursor: 'pointer', borderRadius: '50%', }}>
               </Paper>
             </Box>
           </Box>
         )}
         {value === 2 && (
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Box sx={{
             display: 'flex', 
             flexDirection: 'column',
             overflowY: 'auto',
           }}>
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Typography variant='h4' sx={{fontFamily: 'Roboto', color: '#203f6f', }}>Singles</Typography>
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Box sx={{
               display: 'flex', 
               flexDirection: 'row',
@@ -267,28 +324,40 @@ const MainExplorer = () => {
               overflowY: 'auto',
             }}
             ref={scrollContainerRef}>
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Paper sx={{m: '20px', width: '150px', aspectRatio: ' 1 / 1 ', cursor: 'pointer',}}>
               </Paper>
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Paper sx={{m: '20px', width: '150px', aspectRatio: ' 1 / 1 ', cursor: 'pointer',}}>
               </Paper>
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Paper sx={{m: '20px', width: '150px', aspectRatio: ' 1 / 1 ', cursor: 'pointer',}}>
               </Paper>
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Paper sx={{m: '20px', width: '150px', aspectRatio: ' 1 / 1 ', cursor: 'pointer',}}>
               </Paper>
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Paper sx={{m: '20px', width: '150px', aspectRatio: ' 1 / 1 ', cursor: 'pointer',}}>
               </Paper>
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Paper sx={{m: '20px', width: '150px', aspectRatio: ' 1 / 1 ', cursor: 'pointer',}}>
               </Paper>
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Paper sx={{m: '20px', width: '150px', aspectRatio: ' 1 / 1 ', cursor: 'pointer',}}>
               </Paper>
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Paper sx={{m: '20px', width: '150px', aspectRatio: ' 1 / 1 ', cursor: 'pointer',}}>
               </Paper>
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Paper sx={{m: '20px', width: '150px', aspectRatio: ' 1 / 1 ', cursor: 'pointer',}}>
               </Paper>
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Paper sx={{m: '20px', width: '150px', aspectRatio: ' 1 / 1 ', cursor: 'pointer',}}>
               </Paper>
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Paper sx={{m: '20px', width: '150px', aspectRatio: ' 1 / 1 ', cursor: 'pointer',}}>
               </Paper>
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Paper sx={{m: '20px', width: '150px', aspectRatio: ' 1 / 1 ', cursor: 'pointer',}}>
               </Paper>
             </Box>

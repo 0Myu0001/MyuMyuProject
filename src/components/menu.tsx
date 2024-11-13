@@ -29,6 +29,7 @@ const menuStyle = {
   fontFamily: 'Roboto',
   textTransform: "none", 
   fontSize: "20px",
+  // @ts-expect-error TS(2339): Property 'padding' does not exist on type '{ name:... Remove this comment to see the full error message
   pr: menuButtons.padding ,
 }
 //ここまで
@@ -36,7 +37,7 @@ const menuStyle = {
 const MenuList = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
-  const handleClick = (event) => {
+  const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
@@ -44,6 +45,7 @@ const MenuList = () => {
   };
 
     return(
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Box sx = {{
           display: 'flex',
           flexDirection: 'column',
@@ -51,7 +53,9 @@ const MenuList = () => {
           width: '260px',
           p: '10px'
         }}>
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Box>
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Typography variant='body1' sx={{
             fontSize: '25px',
             fontFamily: 'Roboto',
@@ -60,10 +64,13 @@ const MenuList = () => {
             MyuMyu
           </Typography>
         </Box>
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Box sx={{
           mb: 'auto',
         }}>
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Link to='/home'>
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Button variant="text" sx={{
               color: '#203f6f',
               fontFamily: 'Roboto',
@@ -71,10 +78,13 @@ const MenuList = () => {
               fontSize: "20px",
               pr: 9.3,
             }}>
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <HomeRoundedIcon /> <span style={{ marginLeft: "8px" }}>Home</span>
             </Button>
           </Link>
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Link to='/explore'>
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Button variant="text" sx={{
               color: '#203f6f',
               textTransform: "none",
@@ -82,10 +92,13 @@ const MenuList = () => {
               fontFamily: 'Roboto',
               fontSize: "20px"
             }}> 
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <ExploreIcon /> <span style={{ marginLeft: "8px" }}>Explore</span>
             </Button>
           </Link>
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Link to='/library'>
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Button variant="text" sx={{
               color: '#203f6f', 
               textTransform: "none", 
@@ -93,10 +106,13 @@ const MenuList = () => {
               fontFamily: 'Roboto',
               fontSize: "20px"
             }}> 
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <FormatListBulletedRoundedIcon /><span style={{ marginLeft: "8px" }}>Library</span>
             </Button>
           </Link>
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Link to='/notification'>
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Button variant="text" sx={{
               color: '#203f6f',
               textTransform: "none", 
@@ -104,9 +120,11 @@ const MenuList = () => {
               fontFamily: 'Roboto',
               fontSize: "20px"
             }}> 
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <NotificationsNoneRoundedIcon/> <span style={{ marginLeft: "8px" }}>Notification</span>
             </Button>
           </Link>
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Button variant="text" sx={{
               color: '#203f6f', 
               textTransform: "none", 
@@ -114,9 +132,12 @@ const MenuList = () => {
               fontFamily: 'Roboto',
               fontSize: "20px"
             }}> 
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <PeopleAltRoundedIcon/><span style={{ marginLeft: "8px" }}>Community</span>
             </Button>
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Link to='/create'>
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Button variant="contained" sx={{
                 px: 7.3,
                 background: "linear-gradient(45deg, #fff, #00f)",
@@ -126,7 +147,9 @@ const MenuList = () => {
               </Button>
             </Link>
           </Box>
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Box>
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Button 
               variant="text"
               onClick={handleClick}
@@ -137,8 +160,10 @@ const MenuList = () => {
                 fontFamily: 'Roboto',
                 fontSize: "20px"
               }}> 
+                // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                 <SettingsRoundedIcon/> <span style={{ marginLeft: "8px" }}>Settings</span>
             </Button>
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Menu
               id="simple-menu"
               anchorEl={anchorEl}
@@ -153,12 +178,18 @@ const MenuList = () => {
                 horizontal: 'left',
               }}
             >
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <MenuItem onClick={handleClose}>Analyze</MenuItem>
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <MenuItem onClick={handleClose}>Account Setting</MenuItem>
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <MenuItem onClick={handleClose}>Privacy Setting</MenuItem>
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <MenuItem onClick={handleClose}>Sign Out</MenuItem>
             </Menu>
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Link to='/account'>
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Button variant="text" sx={{
                 color: '#203f6f', 
                 textTransform: "none", 
@@ -166,6 +197,7 @@ const MenuList = () => {
                 fontFamily: 'Roboto',
                 fontSize: "20px"
               }}> 
+                // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                 <AccountCircleRoundedIcon/> <span style={{ marginLeft: "8px" }}>Account</span>
               </Button>
             </Link>

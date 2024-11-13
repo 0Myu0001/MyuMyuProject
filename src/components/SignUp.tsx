@@ -4,24 +4,26 @@ import { Paper, TextField, Button, Box, Typography } from '@mui/material';
 import GoogleIcon from '@mui/icons-material/Google';
 import AppleIcon from '@mui/icons-material/Apple';
 
-const SignUp = ({ handleNext }) => {
+const SignUp = ({
+  handleNext
+}: any) => {
   const [userId, setUserId] = React.useState('');
   const [email, setEmail] = React.useState('');
   const [age, setAge] = React.useState('');
 
-  const handleUsernameChange = (event) => {
+  const handleUsernameChange = (event: any) => {
     setUserId(event.target.value);
   };
 
-  const handleEmailChange = (event) => {
+  const handleEmailChange = (event: any) => {
     setEmail(event.target.value);
   };
 
-  const handleAgeChange = (event) => {
+  const handleAgeChange = (event: any) => {
     setAge(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: any) => {
     event.preventDefault();
 
     const data = {
@@ -47,6 +49,7 @@ const SignUp = ({ handleNext }) => {
   };
 
   return (
+    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Paper 
       elevation={6}
       sx={{
@@ -58,9 +61,13 @@ const SignUp = ({ handleNext }) => {
         padding: '16px',
       }}
     >
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Typography variant="h4" sx={{fontFamily: 'Noto Sans', my: '5px', mx: 'auto', color: '#3F3F3F'}}>Sign up to MyuMyu</Typography>
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <form onSubmit={handleSubmit}>
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <TextField
             label="User id"
             value={userId}
@@ -74,7 +81,9 @@ const SignUp = ({ handleNext }) => {
               width: '75%',
             }}
           />
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Typography 
+            // @ts-expect-error TS(2769): No overload matches this call.
             variant='caption text' 
             sx={{
               fontFamily: 'Noto Sans jp', 
@@ -86,6 +95,7 @@ const SignUp = ({ handleNext }) => {
           >
             ↑Other people can see this name. Please think carefully for you safe.
           </Typography>
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <TextField
             label="Email Address"
             value={email}
@@ -99,6 +109,7 @@ const SignUp = ({ handleNext }) => {
               width: '75%',
             }}
           />
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <TextField
           label="Birth Date"
           type="date"
@@ -117,7 +128,9 @@ const SignUp = ({ handleNext }) => {
           }}
         />
         </Box>
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Button type='submit' variant='contained' onClick={handleNext}
             sx={{
               mx: 'auto', 
@@ -131,7 +144,9 @@ const SignUp = ({ handleNext }) => {
           </Button>
         </Box>
       </form>
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Box sx={{display: 'flex', justifyContent: 'space-evenly'}}>
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Button 
           variant='outlined' 
           sx={{
@@ -140,11 +155,13 @@ const SignUp = ({ handleNext }) => {
             textTransform: 'none', 
             fontFamily: 'Noto Sans jp',
           }} 
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             startIcon={<GoogleIcon />} 
             href="https://www.google.com"
         >
           Sign up with Google
         </Button>
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Button 
           variant='outlined' 
           sx={{
@@ -153,6 +170,7 @@ const SignUp = ({ handleNext }) => {
             textTransform: 'none', 
             fontFamily: 'Noto Sans jp',
           }} 
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           startIcon={<AppleIcon />} 
           href="https://www.google.com"
         >
