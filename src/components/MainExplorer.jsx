@@ -4,12 +4,14 @@ import { useTheme } from '@mui/material/styles';
 import { styled } from '@mui/material/styles';
 import PropTypes from 'prop-types';
 import Tab from '@mui/material/Tab';
+import { TabProps } from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
+import { TabsProps } from '@mui/material/Tabs';
 
-const StyledTabs = styled((props) => (
+const StyledTabs = styled((props: TabsProps) => (
   <Tabs
     {...props}
     TabIndicatorProps={{ children: <span className="MuiTabs-indicatorSpan" /> }}
@@ -27,7 +29,7 @@ const StyledTabs = styled((props) => (
   },
 });
 
-const StyledTab = styled((props) => <Tab disableRipple {...props} />)(
+const StyledTab = styled((props: TabProps) => <Tab disableRipple {...props} />)(
   ({ theme }) => ({
     textTransform: 'none',
     fontWeight: theme.typography.fontWeightRegular,
@@ -44,7 +46,13 @@ const StyledTab = styled((props) => <Tab disableRipple {...props} />)(
 );
 
 
-const CustomTabPanel = (props) => {
+interface CustomTabPanelProps {
+  children?: React.ReactNode;
+  index: number;
+  value: number;
+}
+
+const CustomTabPanel: React.FC<CustomTabPanelProps> = (props) => {
   const { children, value, index, ...other } = props;
 
   return (
@@ -70,7 +78,12 @@ CustomTabPanel.propTypes = {
   value: PropTypes.number.isRequired,
 };
 
-const a11yProps = (index) => {
+interface A11yProps {
+  id: string;
+  'aria-controls': string;
+}
+
+const a11yProps = (index: number): A11yProps => {
   return {
     id: `simple-tab-${index}`,
     'aria-controls': `simple-tabpanel-${index}`,
@@ -79,21 +92,21 @@ const a11yProps = (index) => {
 
 const MainExplorer = () => {
   const theme = useTheme();
-  const mdmatches = useMediaQuery(theme.breakpoints.up('(min-width:960px)'));
-  const smMatches = useMediaQuery(theme.breakpoints.up('(min-width:450px)'));
+  const mdmatches = useMediaQuery(theme.breakpoints.up('md'));
+  const smMatches = useMediaQuery(theme.breakpoints.up('sm'));
 
   const [value, setValue] = React.useState(0);
 
-  const handleChange = (event, newValue) => {
+  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
 
   const [hideSuggest, setHideSuggest] = React.useState(false);
-  const scrollContainerRef = React.useRef(null);
+  const scrollContainerRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
     const handleScroll = () => {
-      if (scrollContainerRef.current.scrollTop > 10) {
+      if (scrollContainerRef.current && scrollContainerRef.current.scrollTop > 10) {
         setHideSuggest(true);
       } else {
         setHideSuggest(false);
@@ -101,7 +114,9 @@ const MainExplorer = () => {
     }; 
     
     const scrollContainer = scrollContainerRef.current;
-    scrollContainer.addEventListener('scroll', handleScroll);
+    if (scrollContainer) {
+      scrollContainer.addEventListener('scroll', handleScroll);
+    }
 
     return () => scrollContainer.removeEventListener('scroll', handleScroll); 
   }, []); 

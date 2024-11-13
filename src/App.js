@@ -1,43 +1,45 @@
-import * as React from 'react';
-import { Route, Routes } from 'react-router-dom';
-import { useBreakPoints } from './components/BreakPoint.jsx';
-import MenuList from './components/menu.jsx';
-import MainPlayer from './components/MainPlayer.jsx';
-import MainExplorer from './components/MainExplorer.jsx';
-import MainLibrary from './components/MainLibrary.jsx';
-import Playlist from './components/Playlist.jsx';
-import Create from './components/Create.jsx';
-import NotificationWindow from './components/NotificationWindow.jsx';
-import AccountPanel from './components/AccountPanel.jsx';
-import Search from './components/Search.jsx';
-import Player from './components/Player.jsx';
-import TrendsBar from './components/TrendsBar.jsx';
-import Box from '@mui/material/Box';
+import * as React from "react";
+import { Route, Routes } from "react-router-dom";
+import { useBreakPoints } from "./components/BreakPoint";
+import MenuList from "./components/menu";
+import MainPlayer from "./components/MainPlayer";
+import MainExplorer from "./components/MainExplorer";
+import MainLibrary from "./components/MainLibrary";
+import Playlist from "./components/Playlist";
+import Create from "./components/Create";
+import NotificationWindow from "./components/NotificationWindow";
+import AccountPanel from "./components/AccountPanel";
+import Search from "./components/Search";
+import Player from "./components/Player";
+import TrendsBar from "./components/TrendsBar";
+import Box from "@mui/material/Box";
 
 const App = () => {
   const { mdMatches, smMatches } = useBreakPoints();
 
   return (
     <div>
-      <Box sx={{
-        height: '100vh',
-        width: '100vw',
-        backgroundColor: '#F2F8FF',
-        fontFamily: 'Roboto',
-        color: '#203f6f',
-        display: 'grid',
-        gridTemplateColumns: 'repeat(6, 1fr)',
-        gridTemplateRows: 'repeat(24, 1fr)',
-      }}>
+      <Box
+        sx={{
+          height: "100vh",
+          width: "100vw",
+          backgroundColor: "#F2F8FF",
+          fontFamily: "Roboto",
+          color: "#203f6f",
+          display: "grid",
+          gridTemplateColumns: "repeat(6, 1fr)",
+          gridTemplateRows: "repeat(24, 1fr)",
+        }}
+      >
         <TrendsBar />
         <MenuList />
         <Routes>
-          <Route path='/explore' element={<MainExplorer />} />
-          <Route path='/library' element={<MainLibrary />} />
-          <Route path='/notification' element={<NotificationWindow />} />
-          <Route path='/account' element={<AccountPanel/>} />
-          <Route path='/create' element={<Create />} />
-          <Route path='/playlist/:playlistId' element={<Playlist />} />
+          <Route path="/explore" element={<MainExplorer />} />
+          <Route path="/library" element={<MainLibrary />} />
+          <Route path="/notification" element={<NotificationWindow />} />
+          <Route path="/account" element={<AccountPanel />} />
+          <Route path="/create" element={<Create />} />
+          <Route path="/playlist/:playlistId" element={<Playlist />} />
         </Routes>
         <Search />
         <Player />
@@ -47,4 +49,3 @@ const App = () => {
 };
 
 export default App;
-
